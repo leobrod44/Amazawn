@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.List;
 import java.util.UUID;
 
-@MappedSuperclass
-public abstract class User
+@Entity
+@Table
+public class User
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    protected UUID id;
     @Column
     protected UUID userId;
     @Column
