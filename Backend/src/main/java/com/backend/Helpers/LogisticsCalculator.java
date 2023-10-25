@@ -1,9 +1,18 @@
 package com.backend.Helpers;
 
+import com.backend.Entities.Shipment;
 import com.backend.Entities.Structures.Location;
+import com.backend.Entities.Structures.Quota;
 
-public class MathHelper
+import java.sql.Time;
+import java.time.LocalTime;
+
+public class LogisticsCalculator
 {
+    private static final double WEIGHT_FACTOR = 1;
+    private static final double VOLUME_FACTOR = 1;
+
+    private static final double GROUND_TRAVEL_SPEED = 60; // (km/h)
     public static double calculateDistance(Location l1, Location l2) {
         double R = 6371;  // Earth's radius in kilometers
 
@@ -25,4 +34,18 @@ public class MathHelper
 
         return R * c;
     }
+
+    public static double calculateFee(double distance, double weight, double volume) {
+        return distance * (weight * WEIGHT_FACTOR + volume * VOLUME_FACTOR);
+    }
+
+    public static double groundDistanceToTime(double distance){
+        return (distance / GROUND_TRAVEL_SPEED * 3600);
+
+    }
+
+    public static Quota generateQuota(Shipment shipment){
+        return null;
+    }
+
 }

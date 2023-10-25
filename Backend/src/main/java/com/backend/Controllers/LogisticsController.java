@@ -1,6 +1,8 @@
 package com.backend.Controllers;
 
 import com.backend.Entities.Center;
+import com.backend.Entities.Shipment;
+import com.backend.Entities.Structures.Quota;
 import com.backend.Processors.Orchestrator;
 import com.backend.Repositories.CenterRepository;
 import com.backend.Services.CenterService;
@@ -20,23 +22,8 @@ public class LogisticsController
 {
     @Autowired
     private CenterService centerService;
-
-    @Autowired
-    private CenterRepository centerRepository;
-
     @Autowired
     private ShipmentService shipmentService;
-
-    @Autowired
-    private TransportService transportService;
-
-    private Orchestrator orchestrator;
-    public LogisticsController(){
-        List<JpaRepository> repositories = new ArrayList<>(){{
-            add(centerRepository);
-        }};
-        orchestrator = new Orchestrator(repositories);
-    }
 
     @PostMapping("/addCenter")
     public Center addCenter(@RequestBody Center center) {
@@ -49,9 +36,9 @@ public class LogisticsController
         return centerService.getAllCenters();
     }
 
-//    @GetMapping("/getOptimalPath")
-//    public getOptimalPath getOptimalPath(){
-//        return shipmentService.
-//    }
+    @GetMapping("/requestQuota")
+    public Quota requestQuota(@RequestBody Shipment shipment){
+        return shipmentService.requestQuota(shipment);
+    }
 
 }

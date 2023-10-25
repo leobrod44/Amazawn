@@ -32,4 +32,9 @@ public class Transport
 
     @Column
     private Time arrivalTime;
+
+    public UUID getId()
+    {
+        return id;
+    }
 }

@@ -31,9 +31,10 @@ public class Shipment
     private double destinationLatitude;
     @Column
     private double destinationLongitude;
+
     @Column(columnDefinition = "jsonb")
     @ElementCollection
-    private List<String> path = new ArrayList<String>();
+    private List<String> path;
 
     public Shipment()
     {
