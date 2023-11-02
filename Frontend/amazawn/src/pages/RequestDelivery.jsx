@@ -3,6 +3,7 @@ import Logo from "../components/Logo";
 import FormRow from "../components/FormRow";
 import FormRowSideBySide from "../components/FormRowSideBySide";
 import FormRowWithDropdown from "../components/FormRowWithDropdown";
+import NavBar from "../components/NavBar"
 import "../styling/index.css";
 
 const RequestDelivery = () => {
@@ -19,6 +20,7 @@ const RequestDelivery = () => {
 
 
   return (
+    <div>
     <form className="form">
       <div style={{ textAlign: "center" }}>
         <Logo style={{ margin: "0 auto" }} />
@@ -45,20 +47,20 @@ const RequestDelivery = () => {
       </div>
 
       <div className="form-section">
-        <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Receiver Information</h4>
+        <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Receiver's Information</h4>
 
         <FormRowSideBySide
           type1="text"
           name1="receiverFirstName"
-          labelText1="Receiver's First Name"
+          labelText1="First Name"
           type2="text"
           name2="receiverLastName"
-          labelText2="Receiver's Last Name"
+          labelText2="Last Name"
         />
 
         <FormRow
           type="email"
-          labelText="Receiver's Email Address"
+          labelText="Email Address"
           name="Remail"
         />
       </div>
@@ -108,6 +110,7 @@ const RequestDelivery = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 
