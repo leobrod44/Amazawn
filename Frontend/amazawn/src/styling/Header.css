@@ -6,10 +6,7 @@
     padding: 10px 20px;
     background-color: #CED3C2; /* Change the background color to your preference */
     color: white; /* Change the text color to your preference */
-  
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
-  height: 60px; /* Adjust the height as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
   
   .header-left {
@@ -34,15 +31,7 @@
     font-size: 24px;
     cursor: pointer;
   }
-  
-  .bar {
-    width: 25px;
-    height: 3px;
-    background-color: white; /* Adjust the color to your preference */
-    margin: 4px 0;
-  }
 
-  
 .green-button {
     background-color: #016846; /* Green color */
     color: white; /* White text color */
