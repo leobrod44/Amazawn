@@ -1,0 +1,208 @@
+
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.shipping-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .shipping-text {
+    flex: 1;
+    padding: 20px;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    padding-left:20%;
+    white-space: nowrap;
+  }
+  
+    .text-title{
+    color:#01442e;
+    }
+
+  .h3{
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    position: relative;
+    
+  }
+
+  .p{
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: larger;
+  }
+  .pvalue{
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: larger;
+    margin-top:-20px;
+  }
+
+
+  .line-div2 {
+    text-align: center;
+    margin-bottom:50px;
+  }
+  
+  .green-line2 {
+    width: 100px; /* Adjust the width as needed */
+    height: 4px; /* Adjust the height as needed */
+    background-color: green;
+    margin-top:-10px;
+  }
+
+
+
+
+
+
+
+  .support {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .support-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .text-container {
+    padding: 20px;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    
+  }
+  .support-text {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+ }
+  
+ .support-image{
+    padding-left:15%;
+ }
+
+
+
+
+
+
+
+
+ .about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10%;
+  }
+  
+  .about-us-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .aboutusp {
+    margin-top: 5px;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: large;
+  }
+  
+  .paragraphs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .paragraphs p {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: larger;
+    padding: 10px;
+  }
+  .line-div {
+    text-align: center;
+  }
+  
+  .green-line {
+    width: 60px; /* Adjust the width as needed */
+    height: 4px; /* Adjust the height as needed */
+    background-color: green;
+    margin: 10px auto; /* Adjust margin values to position the line as needed */
+  }
+
+  .aboutush3{
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    position: relative;
+    margin-bottom: 3px;
+    color: #01442e;
+  }
+
+
+ /* buttons */
+
+.btn {
+    background-color: #016846;
+    width: auto;
+    height:auto;
+    cursor: pointer;
+    color: var(--white);
+    border: transparent;
+    border-radius: var(--borderRadius);
+    letter-spacing: var(--letterSpacing);
+    box-shadow: var(--shadow-2);
+    transition: var(--transition);
+    font-size:larger;
+  }
+  
+  .btn:hover {
+    background: rgb(2, 150, 88);
+    box-shadow: var(--shadow-3);
+  }
+
+  
+  .cards {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed to control the spacing between cards */
+    flex-wrap: wrap; /* Allow cards to wrap to the next row if the container is too narrow */
+  }
+  
+  .card {
+    text-align: center;
+    flex: 1; /* Distribute available space equally among cards */
+    padding: 10px;
+    background-color: #fff; /* White background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    border-radius: 5px; /* Add rounded corners */
+    transition: transform 0.2s;
+    margin: 10px; /* Adjust margin between cards */
+    max-width: 300px; /* Limit the maximum width of each card */
+    margin-bottom:75px;
+  }
+  
+  .card img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+  }
+  
+  .card-text {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: larger;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Add a scale effect on hover */
+    background-color:#e9f1e6;
+  }
+
+  .card-title{
+    padding-top:10%;
+   color: #01442e;
+  }

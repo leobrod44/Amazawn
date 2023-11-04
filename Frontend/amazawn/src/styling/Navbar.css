@@ -1,0 +1,70 @@
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-menu {
+  background: none;
+  border: none;
+  color: white; /* Hamburger menu color */
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 20px; /* Adjust margin as needed to separate it from the sidebar */
+}
+
+.sidebar {
+
+  position:absolute;
+  top:60px;
+  width: 250px;
+  right:-250px;
+  height: auto;
+  background-color:#e9f1e6;
+  transition: right 0.3s; /* Change left to right */
+  z-index: 1000;
+  box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.3); /* Add a shadow to the right of the sidebar */
+}
+
+.sidebar.open {
+  right: 0; /* Show the sidebar when it's open on the right side */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-top:10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 10px; /* Add padding to the list items for better clickability */
+  border-bottom: 1px solid #ccc; /* Add a thin grey border to the bottom of each list item */
+}
+
+.lastli{
+  border-bottom: none; /* Add a thin grey border to the bottom of each list item */
+
+}
+
+li:hover {
+  background: rgb(2, 150, 88);
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.link{
+  color: #016846; /* List item text color */
+  font-size: 18px;
+  font-weight:bold;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 10px; /* Add padding to the list items for better clickability */
+  transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+.link:hover{
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  color: white; /* Text color on hover */
+}
