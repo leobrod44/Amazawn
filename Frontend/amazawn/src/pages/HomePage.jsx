@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../components/Logo";
+import Header from "../components/Header";
 const HomePage= ()=>{
 return(
     <div className="container page">
         <nav>
-            <Logo></Logo>
+            <Header/>
         </nav>
     <div className="info">
       <h2>
@@ -15,7 +16,7 @@ return(
       </p>
       
         <Link to="/RequestDelivery" className="btn">
-          Request a Delivery
+          Ship Now
         </Link>
         
    

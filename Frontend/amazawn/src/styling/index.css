@@ -238,7 +238,6 @@ ul {
 /* buttons */
 
 .btn {
-  background: var(--primary-500);
   background-color: #016846;
   width: 1;
   cursor: pointer;
@@ -259,7 +258,6 @@ ul {
 }
 
 .btn-2 {
-  background: var(--primary-500);
   background-color: #016846;
   width: 1;
   cursor: pointer;
