@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import HOMPAGE from "../assets/images/HOMPAGE.png"
 import support from "../assets/images/support.png"
 import "../styling/HomePage.css"
+import Footer from "../components/Footer";
 const HomePage= ()=>{
 
 
@@ -83,6 +84,7 @@ return(
         </div>
       </div>
     </section>
+    <Footer/>
   </div>
   );
 };
