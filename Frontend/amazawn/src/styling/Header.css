@@ -3,10 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 30px 20px;
     background-color: #CED3C2; /* Change the background color to your preference */
     color: white; /* Change the text color to your preference */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+   
 }
   
   .header-left {

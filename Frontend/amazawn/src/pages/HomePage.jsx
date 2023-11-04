@@ -22,7 +22,7 @@ return(
             <div class="green-line2"></div>
           </div>
             <p className="pvalue">Start shipping your packages.</p>
-            <Link to="/shipping" className="btn">
+            <Link to="/requestdelivery" className="btn">
               Ship Now
             </Link>
           </div>
