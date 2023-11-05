@@ -46,7 +46,7 @@ const FormRowWithDropdown = ({
           ))}
         </select>
         ):(
-          <div className="form-select" style={{ marginLeft: "5px" , width:"60px"}}>In</div>
+          <div className="form-select" style={{ marginLeft: "5px" , width:"60px", color:"#024f35"}}>In</div>
         )}
       </div>
     </div>
