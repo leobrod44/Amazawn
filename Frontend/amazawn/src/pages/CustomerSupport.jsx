@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import "../styling/CustomerService.css";
+import "../styling/CustomerSupport.css";
 
 const CustomerService = () => {
   const [formData, setFormData] = useState({
