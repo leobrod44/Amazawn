@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Logo from './Logo.jsx'
 import '../styling/Header.css'; // Create a separate CSS file for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesome library
@@ -12,11 +13,13 @@ const Header = () => {
         <Logo/>
       </div>
       <div className="header-right">
-        <button className="green-button">
-        <span className="button-text">Track</span>
-          <FontAwesomeIcon icon={faTruck} /> 
-        </button>
-            <Navbar/>
+        <Link to="/tracking">
+          <button className="green-button">
+          <span className="button-text">Track</span>
+            <FontAwesomeIcon icon={faTruck} /> 
+          </button>
+        </Link>
+        <Navbar/>
       </div>
     </header>
   );

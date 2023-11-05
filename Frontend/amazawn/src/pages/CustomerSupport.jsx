@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../styling/CustomerSupport.css";
 
-const CustomerService = () => {
+const CustomerSupport = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -119,4 +119,4 @@ const CustomerService = () => {
   );
 };
 
-export default CustomerService;
+export default CustomerSupport;
