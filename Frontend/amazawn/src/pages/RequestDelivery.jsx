@@ -11,6 +11,8 @@ import "../styling/index.css";
 const RequestDelivery = () => {
 
  const dropdownOptions = ["kg", "lb"]; // Replace with your specific dropdown options
+ const dropdownOptions2=["in"];
+
  const handleInputChange = (event) => {
     // Get the input name and value from the event
     const { name, value } = event.target;
@@ -32,33 +34,24 @@ const RequestDelivery = () => {
       <div className="form-section">
         <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35" }}>Your Information</h4>
 
-        <FormRowSideBySide
-          type1="text"
-          name1="firstName"
-          labelText1="First Name"
-          type2="text"
-          name2="lastName"
-          labelText2="Last Name"
-        />
-
+        <FormRow
+        type="text"
+        name="senderName"
+        labelText="Full name or Company Name *"/>
+       
         <FormRow
           type="email"
-          labelText="Email Address"
+          labelText="Email Address *"
           name="email"
         />
       </div>
 
       <div className="form-section">
         <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Receiver's Information</h4>
-
-        <FormRowSideBySide
-          type1="text"
-          name1="receiverFirstName"
-          labelText1="First Name"
-          type2="text"
-          name2="receiverLastName"
-          labelText2="Last Name"
-        />
+        <FormRow
+        type="text"
+        name="receiverName"
+        labelText="Full name or Company Name"/>
 
         <FormRow
           type="email"
@@ -73,12 +66,12 @@ const RequestDelivery = () => {
         
         <AddressSelectionComponent
         type="address"
-        labelText="Pick-up Location"
+        labelText="Pick-up Location *"
         name="pickupAddress"/>
 
         <AddressSelectionComponent
         type="address"
-        labelText="Delivery Location"
+        labelText="Delivery Location *"
         name="DeliveryAddress"/>
         
       </div>
@@ -88,7 +81,7 @@ const RequestDelivery = () => {
 
     <div className="form-row">
     <FormRowWithDropdown
-        labelText="Package Weight"
+        labelText="Weight *"
         inputType="number"
         inputName="weight"
         inputValue=""
@@ -97,12 +90,45 @@ const RequestDelivery = () => {
         dropdownName="weightUnit"
         dropdownValue=""
         onDropdownChange={handleDropdownChange}
+      /> 
+       <FormRowWithDropdown
+        labelText="Length"
+        inputType="number"
+        inputName="Length"
+        inputValue=""
+        onInputChange={handleInputChange}
+        dropdownOptions={dropdownOptions2}
+        dropdownName="MeasurementUnit"
+        dropdownValue=""
+        onDropdownChange={handleDropdownChange}
+      />
+       <FormRowWithDropdown
+        labelText="Width"
+        inputType="number"
+        inputName="Width"
+        inputValue=""
+        onInputChange={handleInputChange}
+        dropdownOptions={dropdownOptions2}
+        dropdownName="MeasurementUnit"
+        dropdownValue=""
+        onDropdownChange={handleDropdownChange}
+      />
+       <FormRowWithDropdown
+        labelText="Height"
+        inputType="number"
+        inputName="Height"
+        inputValue=""
+        onInputChange={handleInputChange}
+        dropdownOptions={dropdownOptions2}
+        dropdownName="MeasurementUnit"
+        dropdownValue=""
+        onDropdownChange={handleDropdownChange}
       />
   </div>
         
       </div>
-      
-      <div style={{ textAlign: "center" }}>
+
+      <div style={{ textAlign: "center", paddingTop:"14%" }}>
         <button
           type="button"
           className="btn"

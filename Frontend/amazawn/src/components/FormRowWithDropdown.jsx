@@ -11,6 +11,8 @@ const FormRowWithDropdown = ({
   dropdownValue,
   onDropdownChange,
 }) => {
+  const showDropdown = dropdownOptions.length > 1; // Check if there is more than one option
+
   return (
     <div className="form-row">
       <label className="form-label">{labelText}</label>
@@ -23,6 +25,7 @@ const FormRowWithDropdown = ({
           onChange={onInputChange}
           style={{width:"35%"}}
         />
+        {showDropdown ? (
         <select
           name={dropdownName}
           value={dropdownValue}
@@ -42,6 +45,9 @@ const FormRowWithDropdown = ({
             </option>
           ))}
         </select>
+        ):(
+          <div className="form-select" style={{ marginLeft: "5px" , width:"60px"}}>In</div>
+        )}
       </div>
     </div>
   );
