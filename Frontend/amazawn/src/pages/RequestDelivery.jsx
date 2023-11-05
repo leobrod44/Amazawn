@@ -3,8 +3,10 @@ import Logo from "../components/Logo";
 import FormRow from "../components/FormRow";
 import FormRowSideBySide from "../components/FormRowSideBySide";
 import FormRowWithDropdown from "../components/FormRowWithDropdown";
-import NavBar from "../components/NavBar"
+import AddressSelectionComponent from "../components/AddressSelectionComponent";
 import "../styling/index.css";
+
+
 
 const RequestDelivery = () => {
 
@@ -68,17 +70,17 @@ const RequestDelivery = () => {
       <div className="form-section">
         <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35" }}>Addresses</h4>
 
-        <FormRow
-          type="address"
-          labelText="Pickup Address"
-          name="pa"
-        />
+        
+        <AddressSelectionComponent
+        type="address"
+        labelText="Pick-up Location"
+        name="pickupAddress"/>
 
-        <FormRow
-          type="address"
-          labelText="Delivery Address"
-          name="da"
-        />
+        <AddressSelectionComponent
+        type="address"
+        labelText="Delivery Location"
+        name="DeliveryAddress"/>
+        
       </div>
 
       <div className="form-section">
@@ -99,7 +101,7 @@ const RequestDelivery = () => {
   </div>
         
       </div>
-
+      
       <div style={{ textAlign: "center" }}>
         <button
           type="button"
