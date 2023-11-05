@@ -33,13 +33,13 @@ const Navbar = () => {
               </Link>
             </li>
             <li >
-              <Link to="/" className='link'> 
+              <Link to="/Tracking" className='link'> 
               Tracking
               </Link>
             </li>
               
             <li className='lastli'>
-            <Link to="/" className='link'> 
+            <Link to="/CustomerService" className='link'> 
               Support
             </Link>
             </li>

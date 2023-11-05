@@ -40,7 +40,7 @@ return(
           </div>
           <p className="pvalue">We're here for all your needs.</p>
           <p className="pvalue">Reach out to us with any questions or concerns.</p>
-          <Link to="/support" className="btn">
+          <Link to="/CustomerService" className="btn">
             Contact Us
           </Link>
           </div>
