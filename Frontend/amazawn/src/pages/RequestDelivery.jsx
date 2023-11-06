@@ -120,7 +120,7 @@ const RequestDelivery = () => {
           <Logo style={{ margin: "0 auto" }} />
         </div>
         <h3 style={{ textAlign: "center" }}>Request a Delivery</h3>
-        <p style={{textAlign:"center", fontSize:"14px", marginTop:"-15px"}}>required fields are marked '*'</p>
+        <p style={{textAlign:"center", fontSize:"14px", marginTop:"-15px"}}>required fields are marked *</p>
         <div className="form-section">
           <h4
             style={{
