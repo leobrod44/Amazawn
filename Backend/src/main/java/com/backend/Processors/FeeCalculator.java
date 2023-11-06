@@ -10,10 +10,12 @@ import java.util.List;
 
 public class FeeCalculator
 {
-    public static final double DISTANCE_FACTOR = 1 ;// cad/km
-    public static double VOLUME_FACTOR; // cad/cm^3
+    public static final double DISTANCE_FACTOR = 0.009 ;// cad/km
+    public static final double VOLUME_FACTOR = 0.0005; // cad/inch^3
 
-    public static double FLAT_RATE; //cad
+    public static final double WEIGHT_FACTOR= 1.5;
+
+    public static final double FLAT_RATE = 5; //cad
     public static double totalDistance(List<Location> path)
     {
         double distance = 0;
@@ -36,9 +38,18 @@ public class FeeCalculator
         }
         return volume * VOLUME_FACTOR;
     }
-    public static double subTotal(double distancePrice, double volumePrice)
+    public static double weightPricing( List<PackageInfo> requestedPackages)
     {
-        return distancePrice + volumePrice + FLAT_RATE;
+        double weight = 0;
+        for (PackageInfo p : requestedPackages)
+        {
+            weight += p.Weight;
+        }
+        return weight * WEIGHT_FACTOR;
+    }
+    public static double subTotal(double distancePrice, double volumePrice, double weightPrice)
+    {
+        return distancePrice + volumePrice + weightPrice+ FLAT_RATE;
     }
     public static double taxesPricing(double total)
     {

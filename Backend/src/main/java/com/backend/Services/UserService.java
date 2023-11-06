@@ -22,8 +22,8 @@ public class UserService {
     public User addShipmentToUser(User user, UUID shipment)
     {
         User u = userRepository.findByEmail(user.getEmail());
-        if(userRepository.findByEmail(u.getEmail())==null){
-            u = new User(user.getFirst_name(), user.getLast_name(),user.getEmail());
+        if(u== null){
+            u = new User(user.getFirst_name(), user.getLast_name(),user.getEmail(),shipment);
             userRepository.save(u);
         }
         u.addShipment(shipment);

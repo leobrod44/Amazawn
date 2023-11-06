@@ -19,15 +19,11 @@ import java.util.concurrent.Executors;
 
 public class Orchestrator
 {
-    private CenterRepository centerRepository;
-    public Orchestrator(CenterRepository centerRepository)
+
+    public static List<Location> RequestPath(ShipmentRequest shipment, CenterRepository centerRepository)
     {
-        this.centerRepository=centerRepository;
-    }
-    public List<Location> RequestPath(ShipmentRequest shipment)
-    {
-        Center originCenter = this.centerRepository.findNearestCenter(shipment.SenderLocation.getLongitude(),shipment.SenderLocation.getLatitude());
-        Center destinationCenter = this.centerRepository.findNearestCenter(shipment.ReceiverLocation.getLongitude(),shipment.ReceiverLocation.getLatitude());
+        Center originCenter = centerRepository.findNearestCenter(shipment.SenderLocation.getLongitude(),shipment.SenderLocation.getLatitude());
+        Center destinationCenter = centerRepository.findNearestCenter(shipment.ReceiverLocation.getLongitude(),shipment.ReceiverLocation.getLatitude());
 
         // Set path
         Location origin = new Location("origin", shipment.SenderLocation.getLongitude(),shipment.SenderLocation.getLatitude());
@@ -43,8 +39,8 @@ public class Orchestrator
         shipment.path = path;
         return path;
     }
-    public QuotaInfo getQuota(ShipmentRequest request){
-        List<Location> path = RequestPath(request);
+    public static QuotaInfo getQuota(ShipmentRequest request, CenterRepository centerRepository){
+        List<Location> path = RequestPath(request, centerRepository);
         double totalDistance = FeeCalculator.totalDistance(path);
 
         User sender = new User(request.SenderFirstName, request.SenderLastName, request.SenderEmail);
@@ -55,8 +51,9 @@ public class Orchestrator
         String shipmentMethod = "Truck";
         double distancePricing = FeeCalculator.distancePricing(totalDistance);
         double volumePricing = FeeCalculator.volumePricing(request.requestedPackages);
+        double weightPricing = FeeCalculator.weightPricing(request.requestedPackages);
         double flatRate = FeeCalculator.FLAT_RATE;
-        double taxes = FeeCalculator.taxesPricing(FeeCalculator.subTotal(distancePricing, volumePricing));
+        double taxes = FeeCalculator.taxesPricing(FeeCalculator.subTotal(distancePricing, volumePricing, weightPricing));
         double total = distancePricing+ volumePricing + flatRate + taxes;
         QuotaInfo quotaInfo = new QuotaInfo(
                 sender,
@@ -69,6 +66,7 @@ public class Orchestrator
                 totalDistance,
                 distancePricing,
                 volumePricing,
+                weightPricing,
                 flatRate,
                 taxes,
                 total,

@@ -30,6 +30,7 @@ public class QuotaInfo
 
     public double volumePricing;
 
+    public double weightPricing;
     public double flatRate;
 
     public double taxes;
@@ -41,7 +42,7 @@ public class QuotaInfo
 
     public QuotaInfo(){};
 
-    public QuotaInfo(User sender, User receiver, Date invoiceDate, Date departureDate, Date estimatedArrivalDate, String shipmentMethod, List<PackageInfo> requestedPackages, double totalDistance, double distancePricing, double volumePricing, double flatRate, double taxes, double total, List<Location> path)
+    public QuotaInfo(User sender, User receiver, Date invoiceDate, Date departureDate, Date estimatedArrivalDate, String shipmentMethod, List<PackageInfo> requestedPackages, double totalDistance, double distancePricing, double volumePricing, double weightPricing, double flatRate, double taxes, double total, List<Location> path)
     {
         this.sender = sender;
         this.receiver = receiver;
@@ -52,6 +53,7 @@ public class QuotaInfo
         this.requestedPackages = requestedPackages;
         this.totalDistance = totalDistance;
         this.distancePricing = distancePricing;
+        this.weightPricing = weightPricing;
         this.volumePricing = volumePricing;
         this.flatRate = flatRate;
         this.taxes = taxes;

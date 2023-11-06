@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface CenterRepository extends JpaRepository<Center, UUID>
 {
-    @Query("select min(SQRT(POWER((c.longitude - :longitude),2) + POWER((c.latitude - :latitude),2))) from Center c")
+    @Query("SELECT c FROM Center c ORDER BY SQRT(POWER((c.latitude - :latitude), 2) + POWER((c.longitude - :longitude), 2)) asc Limit 1")
     Center findNearestCenter(@Param("longitude") double longitude,@Param("latitude") double latitude);
 
 }

@@ -24,10 +24,6 @@ public class ShipmentRequest
 
     public List<Location> path = new ArrayList<Location>();
 
-    @Column
-    private UUID originCenter;
-    @Column
-    private UUID destinationCenter;
 
 
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table
 public class User
 {
     @Id
@@ -16,15 +15,18 @@ public class User
     protected UUID id;
     @Column
     protected String first_name;
-
     @Column
     protected String last_name;
-    @Column(unique=true)
-
+    @Column
     protected String email;
     @Column
-    @ElementCollection
-    private List<UUID> shipments;
+    private UUID shipment;
+
+    @Column
+    private boolean isSender;
+
+    @Column
+    private boolean isReceiver;
 
     public UUID getId()
     {
@@ -51,14 +53,14 @@ public class User
         this.last_name = last_name;
     }
 
-    public List<UUID> getShipments()
+    public UUID getShipment()
     {
-        return shipments;
+        return shipment;
     }
 
-    public void setShipments(List<UUID> shipments)
+    public void setShipments(UUID shipment)
     {
-        this.shipments = shipments;
+        this.shipment = shipment;
     }
 
     public void setEmail(String email) {
@@ -78,10 +80,16 @@ public class User
         this.first_name = fname;
         this.last_name = lname;
         this.email = email;
-        this.shipments = new ArrayList<>();
+    }
+    public User(String fname, String lname, String email, UUID shipment)
+    {
+        this.first_name = fname;
+        this.last_name = lname;
+        this.email = email;
+        this.shipment = shipment;
     }
     public void addShipment(UUID shipment)
     {
-        this.shipments.add(shipment);
+        this.shipment=shipment;
     }
 }
