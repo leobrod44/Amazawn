@@ -1,14 +1,16 @@
 package com.backend.Controllers;
 
-import com.backend.Entities.Center;
+import com.backend.Entities.*;
+import com.backend.Entities.Package;
+import com.backend.Entities.Structures.Location;
+import com.backend.Entities.Structures.QuotaInfo;
+import com.backend.Entities.Structures.ShipmentRequest;
+import com.backend.Helpers.ListHelper;
 import com.backend.Processors.Orchestrator;
 import com.backend.Repositories.CenterRepository;
-import com.backend.Services.CenterService;
-import com.backend.Services.ShipmentService;
-import com.backend.Services.TransportService;
+import com.backend.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -25,22 +27,24 @@ public class LogisticsController
     private CenterRepository centerRepository;
 
     @Autowired
-    private ShipmentService shipmentService;
+    private LogisticsService logisticsService;
+
 
     @Autowired
-    private TransportService transportService;
+    private UserService userService;
 
-    private Orchestrator orchestrator;
-    public LogisticsController(){
-        List<JpaRepository> repositories = new ArrayList<>(){{
-            add(centerRepository);
-        }};
-        orchestrator = new Orchestrator(repositories);
-    }
 
     @PostMapping("/addCenter")
-    public Center addCenter(@RequestBody Center center) {
-        return centerService.createCenter(center);
+    public boolean addCenter(@RequestBody Center center)
+    {
+        try
+        {
+            centerService.createCenter(center);
+        } catch (Exception e)
+        {
+            return false;
+        }
+        return true;
     }
 
 
@@ -49,9 +53,39 @@ public class LogisticsController
         return centerService.getAllCenters();
     }
 
-//    @GetMapping("/getOptimalPath")
-//    public getOptimalPath getOptimalPath(){
-//        return shipmentService.
-//    }
+    @GetMapping("/requestQuotation")
+    public QuotaInfo requestQuotation(@RequestBody ShipmentRequest shipment){
+
+        QuotaInfo qi = logisticsService.getQuota(shipment);
+        return qi;
+    }
+    @PostMapping("/acceptQuotation")
+    public boolean acceptQuotation(@RequestBody QuotaInfo qi){
+        try{
+            //create quota
+            Quota quota=logisticsService.createQuota(qi);
+
+            //create shipment
+            Shipment shipment = new Shipment(
+                    quota.getId(),
+                    ListHelper.locationsToStrings(qi.path)
+            );
+
+            //create packages
+            qi.requestedPackages.forEach(pkg->{
+                logisticsService.createPackage(pkg,quota.getId(), shipment.getId());
+            });
+
+            //create users
+            User sender = userService.addShipmentToUser(qi.sender, shipment.getId());
+            User receiver = userService.addShipmentToUser(qi.receiver, shipment.getId());
+
+            //save shipment
+            logisticsService.createShipment(shipment, sender, receiver);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
 
 }

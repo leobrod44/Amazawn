@@ -20,17 +20,7 @@ public class Shipment
     @Column
     private UUID receiver;
     @Column
-    private UUID transport;
-    @Column
-    private UUID packageObj;
-    @Column
-    private double originLatitude;
-    @Column
-    private double originLongitude;
-    @Column
-    private double destinationLatitude;
-    @Column
-    private double destinationLongitude;
+    private UUID quota;
     @Column(columnDefinition = "jsonb")
     @ElementCollection
     private List<String> path = new ArrayList<String>();
@@ -38,56 +28,29 @@ public class Shipment
     public Shipment()
     {
     }
-    public Shipment(UUID sender, UUID receiver, UUID packageObj, double originLatitude, double originLongitude, double destinationLatitude, double destinationLongitude)
+
+    public Shipment(UUID quota, List<String> path)
     {
-        this.sender = sender;
-        this.receiver = receiver;
-        this.packageObj = packageObj;
-        this.originLatitude = originLatitude;
-        this.originLongitude = originLongitude;
-        this.destinationLatitude = destinationLatitude;
-        this.destinationLongitude = destinationLongitude;
-        //transport and path are set after calulations
+        this.quota = quota;
+        this.path = path;
     }
 
-    public double getOriginLatitude()
+    public List<Location> getPath()
     {
-        return originLatitude;
+        return ListHelper.stringsToLocations(path);
     }
 
-    public void setOriginLatitude(double originLatitude)
+    public Location getOrigin()
     {
-        this.originLatitude = originLatitude;
+        return ListHelper.stringsToLocations(path).get(0);
+    }
+    public Location getDestination(){
+        return ListHelper.stringsToLocations(path).get(3);
     }
 
-    public double getOriginLongitude()
+    public UUID getId()
     {
-        return originLongitude;
-    }
-
-    public void setOriginLongitude(double originLongitude)
-    {
-        this.originLongitude = originLongitude;
-    }
-
-    public double getDestinationLatitude()
-    {
-        return destinationLatitude;
-    }
-
-    public void setDestinationLatitude(double destinationLatitude)
-    {
-        this.destinationLatitude = destinationLatitude;
-    }
-
-    public double getDestinationLongitude()
-    {
-        return destinationLongitude;
-    }
-
-    public void setDestinationLongitude(double destinationLongitude)
-    {
-        this.destinationLongitude = destinationLongitude;
+        return id;
     }
 
     public UUID getSender()
@@ -110,33 +73,29 @@ public class Shipment
         this.receiver = receiver;
     }
 
-    public UUID getTransport()
+    public UUID getOriginCenter()
     {
-        return transport;
+        return UUID.fromString(ListHelper.stringsToLocations(path).get(1).getName());
+
     }
 
-    public void setTransport(UUID transport)
+    public UUID getDestinationCenter()
     {
-        this.transport = transport;
+        return UUID.fromString(ListHelper.stringsToLocations(path).get(2).getName());
     }
 
-    public UUID getPackageObj()
+    public UUID getQuota()
     {
-        return packageObj;
+        return quota;
     }
 
-    public void setPackageObj(UUID packageObj)
+    public void setQuota(UUID quota)
     {
-        this.packageObj = packageObj;
+        this.quota = quota;
     }
 
-    public List<Location> getPath()
+    public void setPath(List<String> path)
     {
-        return ListHelper.stringsToLocations(path);
-    }
-
-    public void setPath(List<Location> path)
-    {
-        path = path;
+        this.path = path;
     }
 }
