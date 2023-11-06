@@ -3,6 +3,7 @@ package com.backend.Entities;
 import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,56 +15,73 @@ public class User
     @GeneratedValue(strategy = GenerationType.UUID)
     protected UUID id;
     @Column
-    protected UUID userId;
+    protected String first_name;
+
     @Column
-    protected String name;
-    @Column
+    protected String last_name;
+    @Column(unique=true)
+
     protected String email;
     @Column
-    protected String password;
-//    @Column
-//    @Value("${arrayOfStrings}")
-//    protected List<UUID> shipments;
+    @ElementCollection
+    private List<UUID> shipments;
 
-    public String getPassword()
+    public UUID getId()
     {
-        return password;
+        return id;
     }
 
-    public void setPassword(String password)
+    public String getFirst_name()
     {
-        this.password = password;
+        return first_name;
     }
 
-    public UUID getUserId()
+    public void setFirst_name(String first_name)
     {
-        return userId;
+        this.first_name = first_name;
     }
 
-    public void setUserIdID()
+    public String getLast_name()
     {
-        this.userId = UUID.randomUUID();
+        return last_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLast_name(String last_name)
+    {
+        this.last_name = last_name;
+    }
+
+    public List<UUID> getShipments()
+    {
+        return shipments;
+    }
+
+    public void setShipments(List<UUID> shipments)
+    {
+        this.shipments = shipments;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String getEmail() {
         return email;
     }
 
-
-
     public User(){
 
+    }
+
+    public User(String fname, String lname, String email)
+    {
+        this.first_name = fname;
+        this.last_name = lname;
+        this.email = email;
+        this.shipments = new ArrayList<>();
+    }
+    public void addShipment(UUID shipment)
+    {
+        this.shipments.add(shipment);
     }
 }
