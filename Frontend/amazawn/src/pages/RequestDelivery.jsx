@@ -7,6 +7,8 @@ import "../styling/index.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormRowShort from "../components/FormRowShort";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 const RequestDelivery = () => {
   const dropdownOptions = ["kg", "lb"]; // Replace with your specific dropdown options
 
@@ -26,8 +28,8 @@ const RequestDelivery = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("handleFormSubmit called"); // Add this line
-    console.log(formData); // Add this line
+    console.log("handleFormSubmit called"); 
+    console.log(formData); 
     if (
       !formData.senderName ||
       !formData.email ||
@@ -37,7 +39,9 @@ const RequestDelivery = () => {
       !formData.weightUnit ||
       !formData.height ||
       !formData.length ||
-      !formData.width
+      !formData.width ||
+      !formData.Remail ||
+      !formData.receiverName
     ) {
       console.log("Required fields are not filled");
       toast.error("Please fill in all required fields.");
@@ -110,12 +114,13 @@ const RequestDelivery = () => {
 
   return (
     <div>
+      <Header/>
       <form className="form" method="POST" onSubmit={handleFormSubmit}>
         <div style={{ textAlign: "center" }}>
           <Logo style={{ margin: "0 auto" }} />
         </div>
         <h3 style={{ textAlign: "center" }}>Request a Delivery</h3>
-
+        <p style={{textAlign:"center", fontSize:"14px", marginTop:"-15px"}}>required fields are marked '*'</p>
         <div className="form-section">
           <h4
             style={{
@@ -157,14 +162,14 @@ const RequestDelivery = () => {
           <FormRow
             type="text"
             name="receiverName"
-            labelText="Full name or Company Name"
+            labelText="Full name or Company Name *"
             value={formData.receiverName}
             onChange={handleInputChange}
           />
 
           <FormRow
             type="email"
-            labelText="Email Address"
+            labelText="Email Address *"
             name="Remail"
             value={formData.Remail}
             onChange={handleInputChange}
@@ -253,12 +258,16 @@ const RequestDelivery = () => {
             />
           </div>
         </div>
-        <div>
-          <button type="submit" className="btn">
+        <div style={{display: "flex", justifyContent:"center"}}>
+          <button 
+           type="submit" 
+           className="btn"
+           style={{textAlign:"center", display: "inline-block"}}>
             Generate Quotation Now
           </button>
         </div>
       </form>
+      <Footer/>
     </div>
   );
 };
