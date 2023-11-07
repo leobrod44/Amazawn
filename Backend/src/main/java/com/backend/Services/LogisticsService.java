@@ -29,12 +29,6 @@ public class LogisticsService
     @Autowired
     public CenterRepository centerRepository;
 
-    private Orchestrator orchestrator;
-
-    public LogisticsService(){
-        orchestrator = new Orchestrator(centerRepository);
-    }
-
     public Package createPackage(PackageInfo packageInfo, UUID quotaId, UUID shipmentId)
     {
         Package pkg = new Package(packageInfo.Weight, packageInfo.Length,packageInfo.Width, packageInfo.Height, packageInfo.Description,quotaId,shipmentId);
@@ -50,14 +44,14 @@ public class LogisticsService
 
     public void createShipment(Shipment shipment, User sender, User receiver)
     {
-        shipment.setSender(sender.getId());
-        shipment.setReceiver(receiver.getId());
+        shipment.setSenderMail(sender.getEmail());
+        shipment.setReceiverMail(receiver.getEmail());
         shipmentRepository.save(shipment);
 
     }
 
     public QuotaInfo getQuota(ShipmentRequest shipmentRequest){
-        QuotaInfo qi = orchestrator.getQuota(shipmentRequest);
+        QuotaInfo qi = Orchestrator.getQuota(shipmentRequest, centerRepository);
         return qi;
     }
 

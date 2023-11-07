@@ -46,7 +46,17 @@ public class LogisticsController
         }
         return true;
     }
-
+    @PostMapping("/addCenters")
+    public boolean addCenters(@RequestBody List<Center> centers) {
+        try {
+            for (Center center : centers) {
+                centerService.createCenter(center);
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 
     @GetMapping("/getAllCenters")
     public List<Center> getAllCenters() {
@@ -59,7 +69,7 @@ public class LogisticsController
         QuotaInfo qi = logisticsService.getQuota(shipment);
         return qi;
     }
-    @PostMapping("/acceptQuotation")
+    @PostMapping("/startShipment")
     public boolean acceptQuotation(@RequestBody QuotaInfo qi){
         try{
             //create quota
@@ -68,7 +78,7 @@ public class LogisticsController
             //create shipment
             Shipment shipment = new Shipment(
                     quota.getId(),
-                    ListHelper.locationsToStrings(qi.path)
+                    ListHelper.convertLocationListToJson(qi.path)
             );
 
             //create packages

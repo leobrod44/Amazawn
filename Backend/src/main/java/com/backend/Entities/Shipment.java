@@ -16,36 +16,27 @@ public class Shipment
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column
-    private UUID sender;
+    private String senderMail;
     @Column
-    private UUID receiver;
+    private String receiverMail;
     @Column
     private UUID quota;
-    @Column(columnDefinition = "jsonb")
-    @ElementCollection
-    private List<String> path = new ArrayList<String>();
+    @Lob
+    @Column(columnDefinition = "json")
+    private String pathJson;
 
     public Shipment()
     {
     }
 
-    public Shipment(UUID quota, List<String> path)
+    public Shipment(UUID quota, String pathJson)
     {
         this.quota = quota;
-        this.path = path;
+        this.pathJson = pathJson;
     }
 
-    public List<Location> getPath()
-    {
-        return ListHelper.stringsToLocations(path);
-    }
-
-    public Location getOrigin()
-    {
-        return ListHelper.stringsToLocations(path).get(0);
-    }
-    public Location getDestination(){
-        return ListHelper.stringsToLocations(path).get(3);
+    public List<Location> getPathAsList(){
+        return ListHelper.convertLocationJsonToList(pathJson);
     }
 
     public UUID getId()
@@ -53,35 +44,24 @@ public class Shipment
         return id;
     }
 
-    public UUID getSender()
+    public String getSenderMail()
     {
-        return sender;
+        return senderMail;
     }
 
-    public void setSender(UUID sender)
+    public void setSenderMail(String senderMail)
     {
-        this.sender = sender;
+        this.senderMail = senderMail;
     }
 
-    public UUID getReceiver()
+    public String getReceiverMail()
     {
-        return receiver;
+        return receiverMail;
     }
 
-    public void setReceiver(UUID receiver)
+    public void setReceiverMail(String receiverMail)
     {
-        this.receiver = receiver;
-    }
-
-    public UUID getOriginCenter()
-    {
-        return UUID.fromString(ListHelper.stringsToLocations(path).get(1).getName());
-
-    }
-
-    public UUID getDestinationCenter()
-    {
-        return UUID.fromString(ListHelper.stringsToLocations(path).get(2).getName());
+        this.receiverMail = receiverMail;
     }
 
     public UUID getQuota()
@@ -94,8 +74,4 @@ public class Shipment
         this.quota = quota;
     }
 
-    public void setPath(List<String> path)
-    {
-        this.path = path;
-    }
 }
