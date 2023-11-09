@@ -9,6 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 import FormRowShort from "../components/FormRowShort";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import axios from 'axios'; 
+
+
 const RequestDelivery = () => {
   const dropdownOptions = ["kg", "lb"]; // Replace with your specific dropdown options
 
@@ -30,10 +33,10 @@ const RequestDelivery = () => {
     height: "",
   });
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleFormSubmit called"); 
-    console.log(formData); 
+
+    try {
     if (
       !formData.senderName ||
       !formData.email ||
@@ -51,6 +54,7 @@ const RequestDelivery = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
+
     // Validate email format
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (formData.email && !emailRegex.test(formData.email)) {
@@ -82,6 +86,7 @@ const RequestDelivery = () => {
       toast.error("Please fill in all required fields with valid numbers.");
       return;
     }
+
     // Check that weight, length, width, and height are not negative
     const numericFields = ["weight", "length", "width", "height"];
     for (const field of numericFields) {
@@ -96,9 +101,50 @@ const RequestDelivery = () => {
       }
     }
 
-    console.log("Form submitted successfully");
-    console.log(formData);
-  };
+
+    const requestData = {
+      SenderFirstName: formData.senderName,
+      SenderLastName: "", // You may add this field if needed
+      SenderEmail: formData.email,
+      ReceiverFirstName: formData.receiverName,
+      ReceiverLastName: "", // You may add this field if needed
+      ReceiverEmail: formData.Remail,
+      SenderLocation: {
+        name: formData.pickupAddress,
+        latitude: formData.pickupAddressLatitude,
+        longitude: formData.pickupAddressLongitude,
+      },
+      ReceiverLocation: {
+        name: formData.deliveryAddress,
+        latitude: formData.deliveryAddressLatitude,
+        longitude: formData.deliveryAddressLongitude,
+      },
+      requestedPackages: [
+        {
+          Description: "Package 1",
+          Weight: parseFloat(formData.weight), // Convert weight to a number
+          Height: parseInt(formData.height), // Convert height to an integer
+          Width: parseInt(formData.width), // Convert width to an integer
+          Length: parseInt(formData.length), // Convert length to an integer
+        },
+      ],
+    };
+
+    console.log(requestData);
+    
+    // Send the GET request to the backend
+    const response = await axios.get('http://localhost:8080/logistics/requestQuotation', {
+      params: requestData,
+    });
+   console.log('Backend response:', response.data);
+}catch (error) {
+    // Handle errors
+    console.error('Error submitting form:', error);
+
+    // Optionally, you can show an error message to the user
+    toast.error('An error occurred while submitting the form. Please try again.');
+  }
+};
 
   // Validation function to check if a value is a valid number
   const isValidNumber = (value) => {
