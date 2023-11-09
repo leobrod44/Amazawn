@@ -1,11 +1,12 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef,useEffect } from "react";
 import { StandaloneSearchBox, LoadScript } from "@react-google-maps/api";
 import "../styling/index.css";
 
-const AddressSelectionComponent = ({ name, labelText, value, onChange }) => {
+const AddressSelectionComponent = ({ name, labelText, value, onChange,setFormData }) => {
   const inputRef = useRef();
 
+  
   const handlePlaceChanged = () => {
     const [place] = inputRef.current.getPlaces();
 
@@ -14,6 +15,8 @@ const AddressSelectionComponent = ({ name, labelText, value, onChange }) => {
       console.log(place.formatted_address);
       console.log(place.geometry.location.lat());
       console.log(place.geometry.location.lng());
+      const latitude = place.geometry.location.lat();
+      const longitude = place.geometry.location.lng();
 
       // Update the value in the parent component's state
       onChange({
@@ -22,8 +25,22 @@ const AddressSelectionComponent = ({ name, labelText, value, onChange }) => {
           value: formattedAddress, // Set the address as the value
         },
       });
+
+      // Additionally, update latitude and longitude in the form data
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [`${name}Latitude`]: latitude,
+      [`${name}Longitude`]: longitude,
+    }));
     }
   };
+
+  useEffect(() => {
+  if (inputRef.current) {
+    inputRef.current.addListener("places_changed", handlePlaceChanged);
+  }
+}, [inputRef, onChange, setFormData, name]);
+
 
   return (
     <LoadScript

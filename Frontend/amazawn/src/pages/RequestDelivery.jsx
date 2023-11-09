@@ -16,7 +16,11 @@ const RequestDelivery = () => {
     senderName: "",
     email: "",
     pickupAddress: "",
+    pickupAddressLatitude:null,
+    pickupAddressLongitude:null,
     deliveryAddress: "",
+    deliveryAddressLatitude:null,
+    deliveryAddressLongitude:null,
     receiverName: "",
     Remail: "",
     weightUnit: "kg",
@@ -193,6 +197,7 @@ const RequestDelivery = () => {
             name="pickupAddress"
             value={formData.pickupAddress}
             onChange={handleInputChange}
+            setFormData={setFormData}
           />
 
           <AddressSelectionComponent
@@ -201,6 +206,7 @@ const RequestDelivery = () => {
             name="deliveryAddress"
             value={formData.deliveryAddress}
             onChange={handleInputChange}
+            setFormData={setFormData}
           />
         </div>
 
