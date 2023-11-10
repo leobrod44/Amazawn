@@ -16,127 +16,62 @@ public class Shipment
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column
-    private UUID sender;
+    private String senderMail;
     @Column
-    private UUID receiver;
+    private String receiverMail;
     @Column
-    private UUID transport;
-    @Column
-    private UUID packageObj;
-    @Column
-    private double originLatitude;
-    @Column
-    private double originLongitude;
-    @Column
-    private double destinationLatitude;
-    @Column
-    private double destinationLongitude;
-    @Column(columnDefinition = "jsonb")
-    @ElementCollection
-    private List<String> path = new ArrayList<String>();
+    private UUID quota;
+    @Lob
+    @Column(columnDefinition = "json")
+    private String pathJson;
 
     public Shipment()
     {
     }
-    public Shipment(UUID sender, UUID receiver, UUID packageObj, double originLatitude, double originLongitude, double destinationLatitude, double destinationLongitude)
+
+    public Shipment(UUID quota, String pathJson)
     {
-        this.sender = sender;
-        this.receiver = receiver;
-        this.packageObj = packageObj;
-        this.originLatitude = originLatitude;
-        this.originLongitude = originLongitude;
-        this.destinationLatitude = destinationLatitude;
-        this.destinationLongitude = destinationLongitude;
-        //transport and path are set after calulations
+        this.quota = quota;
+        this.pathJson = pathJson;
     }
 
-    public double getOriginLatitude()
-    {
-        return originLatitude;
+    public List<Location> getPathAsList(){
+        return ListHelper.convertLocationJsonToList(pathJson);
     }
 
-    public void setOriginLatitude(double originLatitude)
+    public UUID getId()
     {
-        this.originLatitude = originLatitude;
+        return id;
     }
 
-    public double getOriginLongitude()
+    public String getSenderMail()
     {
-        return originLongitude;
+        return senderMail;
     }
 
-    public void setOriginLongitude(double originLongitude)
+    public void setSenderMail(String senderMail)
     {
-        this.originLongitude = originLongitude;
+        this.senderMail = senderMail;
     }
 
-    public double getDestinationLatitude()
+    public String getReceiverMail()
     {
-        return destinationLatitude;
+        return receiverMail;
     }
 
-    public void setDestinationLatitude(double destinationLatitude)
+    public void setReceiverMail(String receiverMail)
     {
-        this.destinationLatitude = destinationLatitude;
+        this.receiverMail = receiverMail;
     }
 
-    public double getDestinationLongitude()
+    public UUID getQuota()
     {
-        return destinationLongitude;
+        return quota;
     }
 
-    public void setDestinationLongitude(double destinationLongitude)
+    public void setQuota(UUID quota)
     {
-        this.destinationLongitude = destinationLongitude;
+        this.quota = quota;
     }
 
-    public UUID getSender()
-    {
-        return sender;
-    }
-
-    public void setSender(UUID sender)
-    {
-        this.sender = sender;
-    }
-
-    public UUID getReceiver()
-    {
-        return receiver;
-    }
-
-    public void setReceiver(UUID receiver)
-    {
-        this.receiver = receiver;
-    }
-
-    public UUID getTransport()
-    {
-        return transport;
-    }
-
-    public void setTransport(UUID transport)
-    {
-        this.transport = transport;
-    }
-
-    public UUID getPackageObj()
-    {
-        return packageObj;
-    }
-
-    public void setPackageObj(UUID packageObj)
-    {
-        this.packageObj = packageObj;
-    }
-
-    public List<Location> getPath()
-    {
-        return ListHelper.stringsToLocations(path);
-    }
-
-    public void setPath(List<Location> path)
-    {
-        path = path;
-    }
 }
