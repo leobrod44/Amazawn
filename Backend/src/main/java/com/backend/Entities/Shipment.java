@@ -1,5 +1,6 @@
 package com.backend.Entities;
 
+import com.backend.Processors.Tracker;
 import com.backend.Entities.Structures.Location;
 import jakarta.persistence.*;
 import com.backend.Helpers.ListHelper;
@@ -33,6 +34,7 @@ public class Shipment
     {
         this.quota = quota;
         this.pathJson = pathJson;
+        Tracker tracker = new Tracker(getId(), getPathAsList());
     }
 
     public List<Location> getPathAsList(){
@@ -73,5 +75,7 @@ public class Shipment
     {
         this.quota = quota;
     }
+
+
 
 }

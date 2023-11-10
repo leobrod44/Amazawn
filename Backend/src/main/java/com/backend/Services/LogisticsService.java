@@ -47,7 +47,6 @@ public class LogisticsService
         shipment.setSenderMail(sender.getEmail());
         shipment.setReceiverMail(receiver.getEmail());
         shipmentRepository.save(shipment);
-
     }
 
     public QuotaInfo getQuota(ShipmentRequest shipmentRequest){
