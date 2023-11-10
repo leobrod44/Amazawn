@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Logo from './Logo.jsx'
 import '../styling/Header.css'; // Create a separate CSS file for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import the FontAwesome library

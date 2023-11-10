@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Logo from "../components/Logo";
 import FormRow from "../components/FormRow";
 import FormRowSideBySide from "../components/FormRowSideBySide";
@@ -21,6 +23,9 @@ const RequestDelivery = () => {
 
   return (
     <div>
+    <nav>
+      <Header />
+    </nav>
     <form className="form">
       <div style={{ textAlign: "center" }}>
         <Logo style={{ margin: "0 auto" }} />
@@ -110,6 +115,9 @@ const RequestDelivery = () => {
         </button>
       </div>
     </form>
+    <nav>
+      <Footer />
+    </nav>
     </div>
   );
 };

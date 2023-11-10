@@ -39,7 +39,7 @@ const Navbar = () => {
             </li>
               
             <li className='lastli'>
-            <Link to="/" className='link'> 
+            <Link to="/customersupport" className='link'> 
               Support
             </Link>
             </li>
