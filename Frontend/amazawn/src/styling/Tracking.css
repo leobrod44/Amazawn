@@ -51,7 +51,6 @@
   }
 
   .progressbar {
-    width: 150px; /*not defined here*/
     height: 40px;
     border-radius: 20px;
     background-color: #016846;

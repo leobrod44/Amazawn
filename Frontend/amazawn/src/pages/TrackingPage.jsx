@@ -68,7 +68,7 @@ const TrackingPage = () => {
                     <p style={{fontWeight: "bold"}}>Customer support contact :&nbsp;</p><p>customersupport@amazawn.com</p>
                     </div>
 
-                    <ProgressBar progress={0.2}/>
+                    <ProgressBar progress={0.4}/>
                     <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3rem" }}>
                     <div>
                     <button
