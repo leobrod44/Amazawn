@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import RequestDelivery from'./pages/RequestDelivery';
 import CustomerSupport from './pages/CustomerSupport';
-import Tracking from './pages/Tracking';
+import Tracking from './pages/TrackingPage';
 
 function App() {
 

@@ -1,9 +1,12 @@
 import React from "react";
 import Logo from "../components/Logo";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import ProgressBar from "../components/ProgressBar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styling/index.css";
+import "../styling/Tracking.css";
 
 const TrackingPage = () => {
     
@@ -14,12 +17,15 @@ const TrackingPage = () => {
 
     return(
         <div>
+            <nav>
+                <Header />
+            </nav>
             {showTracking &&
             <div style={{ textAlign: "center", display: "block" }} className="trackdelivery">
                 <div>
                     <Logo style={{ margin: "0 auto" }} />
                 </div>
-                <h3 style={{ marginBottom: "3rem"}}>Track you Package</h3>
+                <h3 style={{ marginBottom: "3rem"}}>Track your Package</h3>
 
                 <label style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Enter you delivery ID: </label>
                 <input type="text" className="form-input"/>
@@ -41,15 +47,16 @@ const TrackingPage = () => {
                 <div>
                     <Logo style={{ margin: "0 auto" }} />
                 </div>
-                <h3 style={{ marginBottom: "3rem"}}>Track you Package</h3>
+                <h3 style={{ marginBottom: "3rem"}}>Track your Package</h3>
                 <div style={{ textAlign: "left" }} className="deliveryinfo">
                     <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Delivery Information</h4>
-                    <p className="form-label">Status: {}</p>
-                    <p className="form-label">Estimated Delivery Time: {}</p>
-                    <p className="form-label">Delivery Address: {}</p>
-                    <p className="form-label">Customer support contact: {}</p>
+                    <p className="form-label">Delivery ID: 21319 {}</p>
+                    <p className="form-label">Status: In Transit{}</p>
+                    <p className="form-label">Estimated Delivery Date: Monday, November 20th, 2023{}</p>
+                    <p className="form-label">Delivery Address: 1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8{}</p>
+                    <p className="form-label">Customer support contact: customersupport@amazawn.com{}</p>
 
-                    <ProgressBar progress={0.4}/>
+                    <ProgressBar progress={0.2}/>
                     <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3rem" }}>
                     <div>
                     <button
@@ -64,7 +71,9 @@ const TrackingPage = () => {
                 </div>
             </div>
             }
-
+            <nav>
+                <Footer />
+            </nav>
         </div>
     );
 };
