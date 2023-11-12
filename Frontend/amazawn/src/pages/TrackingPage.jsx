@@ -49,12 +49,24 @@ const TrackingPage = () => {
                 </div>
                 <h3 style={{ marginBottom: "3rem"}}>Track your Package</h3>
                 <div style={{ textAlign: "left" }} className="deliveryinfo">
+
                     <h4 style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Delivery Information</h4>
-                    <p className="form-label">Delivery ID: 21319 {}</p>
-                    <p className="form-label">Status: In Transit{}</p>
-                    <p className="form-label">Estimated Delivery Date: Monday, November 20th, 2023{}</p>
-                    <p className="form-label">Delivery Address: 1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8{}</p>
-                    <p className="form-label">Customer support contact: customersupport@amazawn.com{}</p>
+
+                    <div style={{display: "flex", margin: "0"}} className="form-label">
+                    <p style={{fontWeight: "bold"}}> Delivery ID :&nbsp;</p><p>12345{}</p>
+                    </div>
+                    <div style={{display: "flex", marginBottom: "0rem"}} className="form-label">
+                    <p style={{fontWeight: "bold"}}> Status :&nbsp;</p><p>In Transit{}</p>
+                    </div>
+                    <div style={{display: "flex", marginBottom: "0rem"}} className="form-label">
+                    <p style={{fontWeight: "bold"}}>Estimated Delivery Date :&nbsp;</p><p>Monday, November 20th, 2023{}</p>
+                    </div>
+                    <div style={{display: "flex", marginBottom: "0rem"}} className="form-label">
+                    <p style={{fontWeight: "bold"}}>Delivery Address :&nbsp;</p><p> 1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8{}</p>
+                    </div>
+                    <div style={{display: "flex", marginBottom: "0rem"}} className="form-label">
+                    <p style={{fontWeight: "bold"}}>Customer support contact :&nbsp;</p><p>customersupport@amazawn.com</p>
+                    </div>
 
                     <ProgressBar progress={0.2}/>
                     <div style={{ display: "flex", justifyContent: "space-between", marginTop: "3rem" }}>
