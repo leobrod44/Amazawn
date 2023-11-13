@@ -34,18 +34,20 @@ const Navbar = () => {
               </Link>
             </li>
             <li >
-              <Link to="/" className='link'> 
+              <Link to="/tracking" className='link'> 
               Tracking
               </Link>
             </li>
+
       
             <li>
             <Link to="/review" className='link' >
                 Review
               </Link>
-              </li>
-              <li className='lastli'>
-            <Link to="/" className='link'> 
+              </li>     
+            <li className='lastli'>
+            <Link to="/customersupport" className='link'> 
+
               Support
             </Link>
             </li>
