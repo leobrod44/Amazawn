@@ -27,6 +27,7 @@ const Navbar = () => {
       <div className={`sidebar ${isOpen ? 'open' : ''}`} >
         <nav>
           <ul>
+          
             <li >
               <Link to="/requestdelivery" className='link' >
                 Shipping
@@ -37,12 +38,20 @@ const Navbar = () => {
               Tracking
               </Link>
             </li>
-              
+
+      
+            <li>
+            <Link to="/review" className='link' >
+                Review
+              </Link>
+              </li>     
             <li className='lastli'>
             <Link to="/customersupport" className='link'> 
+
               Support
             </Link>
             </li>
+            
           </ul>
         </nav>
       </div>
