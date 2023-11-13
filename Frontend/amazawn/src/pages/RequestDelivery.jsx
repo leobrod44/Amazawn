@@ -9,8 +9,6 @@ import "../styling/index.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import FormRowShort from "../components/FormRowShort";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import axios from 'axios'; 
 
 
