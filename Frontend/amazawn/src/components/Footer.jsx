@@ -22,10 +22,10 @@ const Footer = () => {
                   <Link to="/requestdelivery" className="link">Ship Now</Link>
                 </li>
                 <li>
-                  <Link className="link">Tracking</Link>
+                  <Link to="/tracking" className="link">Tracking</Link>
                 </li>
                 <li>
-                  <Link className="link">Contact Us</Link>
+                  <Link to="/customersupport" className="link">Contact Us</Link>
                 </li>
               </ul>
             </div>

@@ -103,8 +103,6 @@ input:-webkit-autofill:active{
     display: inline;
   }
   
-
-  
   .form-container {
     display: flex;
     justify-content: center;
@@ -436,4 +434,3 @@ ul {
 .full-page {
   min-height: 100vh;
 }
-
