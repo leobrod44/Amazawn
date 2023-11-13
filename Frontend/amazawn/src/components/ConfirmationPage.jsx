@@ -7,7 +7,7 @@ const ConfirmationPage = () => (
     <h2>Review Submitted</h2>
     <p>Thank you for using our services!</p>
     <Link to="/" className="link">
-    <button>Back to Home</button>
+    <button className='btn'>Back to Home</button>
     </Link>
   </div>
 );
