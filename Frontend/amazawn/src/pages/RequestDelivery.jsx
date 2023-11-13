@@ -9,8 +9,39 @@ import "react-toastify/dist/ReactToastify.css";
 import FormRowShort from "../components/FormRowShort";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import PopupWindow from "../components/PopupWindow";
+
 const RequestDelivery = () => {
   const dropdownOptions = ["kg", "lb"]; // Replace with your specific dropdown options
+  const [showPopup, setShowPopup] = useState(false);
+  const handleButtonClick = () => {
+    if (
+      !formData.senderName ||
+      !formData.email ||
+      !formData.pickupAddress ||
+      !formData.deliveryAddress ||
+      !formData.weight ||
+      !formData.weightUnit ||
+      !formData.height ||
+      !formData.length ||
+      !formData.width ||
+      !formData.Remail ||
+      !formData.receiverName
+  
+     ) {
+        console.log("Required fields are not filled");
+        toast.error("Cannot generate quotation");
+       }  else{
+            setShowPopup(true); }
+       };
+ 
+  
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+  
+       
+  
 
   const [formData, setFormData] = useState({
     senderName: "",
@@ -261,11 +292,14 @@ const RequestDelivery = () => {
         <div style={{display: "flex", justifyContent:"center"}}>
           <button 
            type="submit" 
-           className="btn"
+           onClick={handleButtonClick} 
+           className="btn" 
            style={{textAlign:"center", display: "inline-block"}}>
             Generate Quotation Now
           </button>
+          {showPopup && <PopupWindow onClose={handleClosePopup} />}
         </div>
+    
       </form>
       <Footer/>
     </div>
