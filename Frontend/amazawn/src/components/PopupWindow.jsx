@@ -23,9 +23,9 @@ const PopupWindow = ({ onClose }) => {
           <span className="form-label">Delivery Method: </span> {'Ground shipping'} 
           </p>
          <br></br>
-         <p> <span className="form-label">Estimated Delivery Time: </span> {'11/20/2023 by 8.30PM'}  </p>
+         <p> <span className="form-label">Estimated Delivery Time: </span> {'Monday, November 20th, 2023'}  </p>
          <br></br>
-         <p> <span className="form-label">Delivery Address: </span> {'1234 Rue Jean Mance'}  </p>
+         <p> <span className="form-label">Delivery Address: </span> {'1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8'}  </p>
          <br></br>
          <p> <span className="form-label">Total Amount </span> {'CAD 24.59'} </p>
 

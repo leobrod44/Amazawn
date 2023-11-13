@@ -38,18 +38,18 @@ const Navbar = () => {
               Tracking
               </Link>
             </li>
-              
-            <li className='lastli'>
+      
+            <li>
+            <Link to="/review" className='link' >
+                Review
+              </Link>
+              </li>
+              <li className='lastli'>
             <Link to="/" className='link'> 
               Support
             </Link>
             </li>
-
-            <li >
-              <Link to="/" className='link' >
-                Review
-              </Link>
-            </li>
+            
           </ul>
         </nav>
       </div>

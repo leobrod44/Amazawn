@@ -4,14 +4,16 @@
     top: 60%;
     left:50%;
     transform: translate(-50%, 0);
-    background: #d1e7dd;
+    background:white;
     padding: 20px; 
     border-radius: 50px;
-   
+    
     font-family: Roboto, sans-serif;
-    border: 1px solid  #016846;
-   
+    border: 2px solid  #016846;
+    box-shadow: 0 4px 8px rgba(108, 106, 106, 3);
 }
+   
+
 
 
   .popup-wrapper > * {

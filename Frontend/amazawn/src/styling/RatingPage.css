@@ -1,0 +1,42 @@
+
+
+.container-raiting {
+    position: relative;
+    max-width: 640px; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the container horizontally */
+    padding: 30px; /* Add some padding for spacing */
+    border-radius: 10px; /* Add round borders */
+    /* Add a border for better visibility */
+    border: 6px solid  white;
+    background-color: white ; 
+    box-shadow: 0 4px 8px rgba(108, 106, 106, 3);
+    
+    
+  }
+  
+
+
+/* Add other styles as needed for your form elements */
+textarea {
+    width: 70%;
+    box-sizing: border-box;
+    border-radius: 10px; /* Add rounded corners to the textarea */
+    padding: 10px; /* Add padding for better aesthetics */
+    height: 12vh;
+  }
+
+button {
+    background-color: #016846;
+    width: 1;
+    cursor: pointer;
+    color: var(--white);
+    border: transparent;
+    border-radius: var(--borderRadius);
+    letter-spacing: var(--letterSpacing);
+    padding: 0.375rem 0.75rem;
+    box-shadow: var(--shadow-2);
+    transition: var(--transition);
+    text-transform: capitalize;
+    display: inline-block;
+  }
+ 

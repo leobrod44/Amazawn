@@ -3,9 +3,10 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from './pages/HomePage';
 import RequestDelivery from'./pages/RequestDelivery';
-
+import RatingPage from './pages/RatingPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
 
     <Route path="/" element={<HomePage />} />
     <Route path="/requestdelivery" element={<RequestDelivery />} />
-    <Route path="/review" element={<HomePage/>}/>
+    <Route path="/review" element={<RatingPage/>}/>
 
     </Routes>
     </BrowserRouter>
