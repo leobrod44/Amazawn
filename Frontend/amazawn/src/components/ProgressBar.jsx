@@ -1,13 +1,13 @@
 import React from "react";
-import "../styling/index.css";
+import "../styling/Tracking.css";
 
 const ProgressBar = ({progress}) => {
 
     return (
-        <div>
+        <div style={{marginTop: "20px"}}>
         <label className="progress-label">Progression</label>
             <div className="progressbar-container">
-                <div width={`${progress*100}%`} role="progressbar" /* progress width still not working well, will edit in the next commit*/
+                <div style={{width: "250px" }} role="progressbar" /* progress width still not working well, will edit in the next commit*/
                     aria-valuenow={progress}
                     aria-valuemin={0}
                     aria-valuemax={1}
