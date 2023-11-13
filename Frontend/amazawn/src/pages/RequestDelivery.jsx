@@ -13,7 +13,7 @@ import axios from 'axios';
 
 
 const RequestDelivery = () => {
-  const dropdownOptions = ["kg", "lb"]; // Replace with your specific dropdown options
+  const dropdownOptions = ["kg", "lb"]; 
 
   const [formData, setFormData] = useState({
     senderName: "",
@@ -101,13 +101,13 @@ const RequestDelivery = () => {
       }
     }
 
-
-    const requestData = {
+      //COMMENTING THIS OUT BECASUE ITS NOT NEEDED FOR SPRINT 3- SINCE SPRINT 3 IS FRONTEND ONLY
+    /*  const requestData = {
       SenderFirstName: formData.senderName,
-      SenderLastName: "", // You may add this field if needed
+      SenderLastName: "", 
       SenderEmail: formData.email,
       ReceiverFirstName: formData.receiverName,
-      ReceiverLastName: "", // You may add this field if needed
+      ReceiverLastName: "",
       ReceiverEmail: formData.Remail,
       SenderLocation: {
         name: formData.pickupAddress,
@@ -136,14 +136,14 @@ const RequestDelivery = () => {
     const response = await axios.get('http://localhost:8080/logistics/requestQuotation', {
       params: requestData,
     });
-   console.log('Backend response:', response.data);
+   console.log('Backend response:', response.data);  */
 }catch (error) {
-    // Handle errors
+    /* // Handle errors
     console.error('Error submitting form:', error);
 
     // Optionally, you can show an error message to the user
-    toast.error('An error occurred while submitting the form. Please try again.');
-  }
+    toast.error('An error occurred while submitting the form. Please try again.'); */
+  } 
 };
 
   // Validation function to check if a value is a valid number
@@ -165,7 +165,7 @@ const RequestDelivery = () => {
   return (
     <div>
       <Header/>
-      <form className="form" method="POST" onSubmit={handleFormSubmit}>
+      <form className="form"  method="POST"  onSubmit={handleFormSubmit}>
         <div style={{ textAlign: "center" }}>
           <Logo style={{ margin: "0 auto" }} />
         </div>
