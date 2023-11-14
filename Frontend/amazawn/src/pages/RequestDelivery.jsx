@@ -88,13 +88,13 @@ const RequestDelivery = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (formData.email && !emailRegex.test(formData.email)) {
       console.log("email");
-      toast.error("Invalid email address format (email).");
+      toast.error("Invalid email address format.");
       return;
     }
 
     if (formData.Remail && !emailRegex.test(formData.Remail)) {
       console.log("email");
-      toast.error("Invalid email address format (email).");
+      toast.error("Invalid email address format.");
       return;
     }
 

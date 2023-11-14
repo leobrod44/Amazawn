@@ -256,26 +256,6 @@ ul {
   box-shadow: var(--shadow-3);
 }
 
-.btn-2 {
-  background-color: #016846;
-  width: 1;
-  cursor: pointer;
-  color: var(--white);
-  border: transparent;
-  border-radius: var(--borderRadius);
-  letter-spacing: var(--letterSpacing);
-  padding: 0.375rem 0.75rem;
-  box-shadow: var(--shadow-2);
-  transition: var(--transition);
-  text-transform: capitalize;
-  display: inline-block;
-}
-
-.btn-2:hover {
-  background: var(--primary-700);
-  box-shadow: var(--shadow-3);
-}
-
 .btn-block {
   width: 100%;
 }

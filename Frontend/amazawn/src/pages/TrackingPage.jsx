@@ -27,7 +27,7 @@ const TrackingPage = () => {
                 </div>
                 <h3 style={{ marginBottom: "3rem"}}>Track your Package</h3>
 
-                <label style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Enter you delivery ID: </label>
+                <label style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Enter your delivery ID: </label>
                 <input type="text" className="form-input"/>
                 <div>
                     <button

@@ -30,7 +30,7 @@ const PopupWindow = ({ onClose }) => {
          <p> <span className="form-label">Total Amount </span> {'CAD 24.59'} </p>
 
     
-         <button
+         <button classname="btn"
     style={{
         backgroundColor: '#016846',
         color: 'white',
