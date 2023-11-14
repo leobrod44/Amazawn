@@ -34,7 +34,6 @@ public class Shipment
     {
         this.quota = quota;
         this.pathJson = pathJson;
-        Tracker tracker = new Tracker(getId(), getPathAsList());
     }
 
     public List<Location> getPathAsList(){
