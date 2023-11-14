@@ -13,23 +13,26 @@ const PopupWindow = ({ onClose }) => {
          onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 0px 0px rgba(0, 0, 0, 0.1)')}
          style={{ backgroundColor: '#016846', color: 'white' }}
          onClick={onClose}>
-          X
+          x
           </button>
          <br></br>
          <br></br>
-         <h3>Quotation Details</h3>
-         <br></br>
-         <p >
-          <span className="form-label">Delivery Method: </span> {'Ground shipping'} 
-          </p>
-         <br></br>
-         <p> <span className="form-label">Estimated Delivery Time: </span> {'Monday, November 20th, 2023'}  </p>
-         <br></br>
-         <p> <span className="form-label">Delivery Address: </span> {'1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8'}  </p>
-         <br></br>
-         <p> <span className="form-label">Total Amount </span> {'CAD 24.59'} </p>
-
+         <h3 style={{ textAlign: "center" }}>Quotation Details</h3>
     
+         <p><span className="form-label">Delivery Method: </span> {'Ground shipping'}  </p>
+         <p> <span className="form-label">Delivery Address: </span> {'1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8'}  </p>
+         <p> <span className="form-label">Estimated Delivery Time: </span> {'Monday, November 20th, 2023'}  </p>
+         <p> <span className="form-label">Estimated Pick Up Date: </span> {'Friday, November 17th, 2023'} </p>
+         <p> <span className="form-label">Distance Pricing: </span> {'CAD 44.19'} </p>
+         <p> <span className="form-label">Volume Pricing: </span> {'CAD 1.98'} </p>
+         <p> <span className="form-label">Weight Pricing: </span> {'CAD 8.55'} </p>
+         <p> <span className="form-label">Flat Rate: </span> {'CAD 5.0'} </p>
+         <p> <span className="form-label">Taxes: </span> {'CAD 8.96'} </p>
+         
+         
+         <p> <span className="form-label">Total Amount: </span> {'CAD 60.14'} </p>
+
+
          <button classname="btn"
     style={{
         backgroundColor: '#016846',
@@ -37,6 +40,7 @@ const PopupWindow = ({ onClose }) => {
         transition: 'box-shadow 0.3s ease', 
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', 
     }}
+
     onMouseOver={(e) => (e.currentTarget.style.boxShadow = '0px 16px 16px rgba(0, 0, 0, 0.5)')} // Box shadow on hover
     onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.1)')} // Reset box shadow when not hovering
 >

@@ -6,7 +6,7 @@
     transform: translate(-50%, 0);
     background:white;
     padding: 20px; 
-    border-radius: 50px;
+    border-radius: 10px;
     
     font-family: Roboto, sans-serif;
     border: 2px solid  #016846;
@@ -20,21 +20,24 @@
     width: 100%;
   }
 .popup-content {
-    text-align: center;
+    text-align: left;
     position: relative;
+    line-height: 1; 
   }
   
   button {
     margin-top: 10px;
     padding: 8px ;
     border-radius: 5px;
-
+    right: 10px;
+    margin: 2 auto;
+   
 
   }
   .close-button {
     position: absolute;
     top: 0px;
-    right: 10px;
+    right: 5px;
     background-color: #016846;
     color: white;
     border: none;
@@ -47,6 +50,7 @@
 }
 .form-label {
   color: #016846;
-  font-weight: bold;
+  font-weight: Light;
+  
 }
   
