@@ -32,9 +32,15 @@ const PopupWindow = ({ onClose }) => {
          
          <p> <span className="form-label">Total Amount: </span> {'CAD 60.14'} </p>
 
-    
-         <button className='button'
-    
+
+         <button classname="btn"
+    style={{
+        backgroundColor: '#016846',
+        color: 'white',
+        transition: 'box-shadow 0.3s ease', 
+        boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', 
+    }}
+
     onMouseOver={(e) => (e.currentTarget.style.boxShadow = '0px 16px 16px rgba(0, 0, 0, 0.5)')} // Box shadow on hover
     onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.1)')} // Reset box shadow when not hovering
 >

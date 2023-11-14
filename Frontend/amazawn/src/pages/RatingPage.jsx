@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import '../styling/RatingPage.css'
 import Footer from "../components/Footer";
 import ConfirmationPage from '../components/ConfirmationPage';
-
+import '../styling/CustomerSupport.css'
 
 const RatingPage = () => {
   const [ratings, setRatings] = useState({
@@ -53,8 +53,24 @@ const RatingPage = () => {
       <StarRating title="Support" onRatingChange={(rating) => handleRatingChange('supportTeam', rating)} />
       <div>
         <br></br>
-        <label className="form-label" style={{ fontSize:"larger", color:" #016846", fontFamily: "Roboto,Arial, Helvetica, sans-serif"}} >Additional Comments</label>
-        <textarea rows="4" cols="50" placeholder="Enter your comments here" value={comments} onChange={handleCommentsChange}></textarea>
+        <label className="form-label" 
+        style={{ 
+        fontSize:"larger",
+        color:" #016846",
+        fontFamily: "Roboto,Arial, Helvetica, sans-serif"
+        }} >Additional Comments</label>
+       
+        <textarea 
+        className='message-box'
+        rows="4" 
+        cols="50" 
+        value={comments} 
+        onChange={handleCommentsChange}
+        style={{height:"150px"}}
+        />
+
+      
+      
       </div>
       <button className="btn"
       style={{
