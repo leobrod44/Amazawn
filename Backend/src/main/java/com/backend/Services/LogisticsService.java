@@ -59,7 +59,8 @@ public class LogisticsService
 
     public UUID getShipment() {
         List<Shipment> s = shipmentRepository.findAll();
-        return s.get(0).getId();
+        return s.get(6).getId();
+        //currently set on index 6, that was the latest created shipment (used for testing)
     }
 
     public TrackerGiveBack startTracker (TrackingInfo t) {
@@ -68,7 +69,7 @@ public class LogisticsService
         Tracker tracker = new Tracker(s, t.currentDate, quotaRepository);
 
         TrackerGiveBack ttt = new TrackerGiveBack(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
-        // how long ago shipment arrived at milestone
+
         return ttt;
     }
 
