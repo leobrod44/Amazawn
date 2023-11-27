@@ -38,4 +38,8 @@ public class Quota
     {
         return id;
     }
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
 }

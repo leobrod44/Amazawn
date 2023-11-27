@@ -17,9 +17,7 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class BackendApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(BackendApplication.class, args);
-    }
+    public static void main(String[] args) { SpringApplication.run(BackendApplication.class, args); }
 
 
 }

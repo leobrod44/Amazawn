@@ -19,8 +19,8 @@ return(
           </div>
           <div className="shipping-text">
             <h3 className="text-title">Let's Get Shipping</h3>
-            <div class="line-div2">
-            <div class="green-line2"></div>
+            <div className="line-div2">
+            <div className="green-line2"></div>
           </div>
             <p className="pvalue">Start shipping your packages.</p>
             <Link to="/requestdelivery" className="btn">
@@ -35,8 +35,8 @@ return(
         <div className="support-content">
           <div className="text-container">
           <h3 className="text-title">Support</h3>
-          <div class="line-div2">
-            <div class="green-line2"></div>
+          <div className="line-div2">
+            <div className="green-line2"></div>
           </div>
           <p className="pvalue">We're here for all your needs.</p>
           <p className="pvalue">Reach out to us with any questions or concerns.</p>
@@ -53,8 +53,8 @@ return(
       <section className="about-us">
         <div className="about-us-content">
           <h3 className="aboutush3"> About Us</h3>
-          <div class="line-div">
-            <div class="green-line"></div>
+          <div className="line-div">
+            <div className="green-line"></div>
           </div>
           <p className="aboutusp">Explore what makes us unique.</p>
         
@@ -66,12 +66,12 @@ return(
               <p> Unlike our competitors, Amazawn integrates all parts of the delivery process into one seamless chain, improving efficiency and user experience.</p>
            </div>
           
-          <div class="card">
+          <div className="card">
             <h5 className="card-title">Transparency</h5>
            <p>Providing transparency at every stage of the service through detailed quotations, live tracking, and continuous feedback. </p> 
           </div>
 
-          <div class="card">
+          <div className="card">
             <h5 className="card-title">Live Tracking</h5>
            <p>Monitor your package's location with our accurate and easy to use tracking service. </p> 
           </div>

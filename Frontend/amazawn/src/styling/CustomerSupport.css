@@ -13,7 +13,7 @@
 }
 .form-container {
     margin-top: 70px;
-    height: 650px;
+    height: auto;
     width: 725px;
     display: flex;
     align-items: center;
@@ -37,7 +37,8 @@
     width: 100%;
     height: 300px;
     border-radius: 5px;
-    border-color: #5C6F51;
+    border: 1px solid #CED3C2;
+    background-color: #105e211a;
     resize: none;
     padding-top: 5px;
     padding-left: 8px;
@@ -64,7 +65,7 @@
 
 form {
     margin-top: 40px;
-    border-color: #5C6F51;
+    border-color: transparent;
     border-style: solid;
     
 }

@@ -40,7 +40,7 @@ const Footer = () => {
                   <Link className="link">FAQ</Link>
                 </li>
                 <li>
-                  <Link className="link">Leave a Review</Link>
+                  <Link to="/review" className="link">Leave a Review</Link>
                 </li>
               </ul>
             </div>
