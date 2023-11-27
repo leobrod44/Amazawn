@@ -8,4 +8,5 @@ import java.util.UUID;
 @Repository
 public interface ShipmentRepository  extends JpaRepository<Shipment, UUID>
 {
+    //public Shipment findById(UUID id);
 }
