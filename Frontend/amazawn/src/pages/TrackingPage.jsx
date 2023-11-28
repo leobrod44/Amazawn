@@ -16,9 +16,7 @@ const TrackingPage = () => {
 
     return(
         <div>
-            <nav>
-                <Header />
-            </nav>
+            <Header />
             {showTracking &&
             <div style={{ textAlign: "center", display: "block" }} className="trackdelivery">
                 <div>
@@ -82,9 +80,7 @@ const TrackingPage = () => {
                 </div>
             </div>
             }
-            <nav>
-                <Footer />
-            </nav>
+            <Footer />
         </div>
     );
 };
