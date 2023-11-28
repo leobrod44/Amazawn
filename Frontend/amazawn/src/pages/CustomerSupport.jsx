@@ -5,6 +5,7 @@ import "../styling/CustomerSupport.css";
 import FormRow from "../components/FormRow";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const CustomerSupport = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const CustomerSupport = () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isFieldEmpty(name) && !isFieldEmpty(email) && !isFieldEmpty(message)) {
@@ -55,6 +56,25 @@ const CustomerSupport = () => {
           setMessageText("");
           setMessageClass("");
         }, 3000);
+        try {
+          const ticketData = {
+            name: name,
+            email: email,
+            message: message,
+    
+          };
+          const response = await axios.post('http://localhost:8080/support/customersupport', ticketData, {
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          });
+          console.log(response.data);
+      } catch (error) {
+          console.error('Error:', error);
+          // Handle errors if the request fails
+      }
+          
+          
 
       } else {
         // Show a warning message for invalid email format

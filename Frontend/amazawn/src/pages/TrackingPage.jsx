@@ -7,14 +7,44 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styling/index.css";
 import "../styling/Tracking.css";
+import axios from "axios";
+
 
 const TrackingPage = () => {
-    
-    const [showTracking, setshowTracking] = useState(true);
-    const toggleButton = () => {
-        setshowTracking(!showTracking);
-    }
+    const [showTracking, setShowTracking] = useState(true);
+    const [trackingData, setTrackingData] = useState({});
+    const [deliveryID, setDeliveryID] = useState('');
+  
+    const toggleButton = async () => {
+        try {
+            const currentDate = new Date();
+            currentDate.setDate((currentDate.getDate() + 1).toISOString());
 
+            const requestData = {
+                shipmentID: deliveryID,
+                currentDate: currentDate,
+            };
+            console.log(deliveryID)
+            console.log(requestData)
+
+            const response = await axios.post('http://localhost:8080/tracking/trackShipment', requestData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log(response.data);
+            setTrackingData(response.data);
+            setShowTracking(!showTracking);
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle errors if the request fails
+        }
+        
+    };
+
+    const handleInputChange = (event) => {
+        setDeliveryID(event.target.value);
+    };
     return(
         <div>
             <nav>
@@ -28,7 +58,11 @@ const TrackingPage = () => {
                 <h3 style={{ marginBottom: "3rem"}}>Track your Package</h3>
 
                 <label style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Enter your delivery ID: </label>
-                <input type="text" className="form-input"/>
+                <input  
+                    type="text"
+                    className="form-input"
+                    value={deliveryID}
+                    onChange={handleInputChange}/>
                 <div>
                     <button
                     type="button"

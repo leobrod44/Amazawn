@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import FormRowShort from "../components/FormRowShort";
 import PopupWindow from "../components/PopupWindow";
 import axios from 'axios'; 
+import { useEffect } from "react";
 
 const RequestDelivery = () => {
   const dropdownOptions = ["kg", "lb"]; 
@@ -42,7 +43,11 @@ const RequestDelivery = () => {
     setShowPopup(false);
   };
   
-       
+  const [responseData, setResponseData] = useState({});
+
+  useEffect(() => {
+    console.log('Response Data Updated:', responseData);
+  }, [responseData]); 
   
   const [formData, setFormData] = useState({
     senderName: "",
@@ -131,7 +136,7 @@ const RequestDelivery = () => {
     }
 
       //COMMENTING THIS OUT BECASUE ITS NOT NEEDED FOR SPRINT 3- SINCE SPRINT 3 IS FRONTEND ONLY
-    /*  const requestData = {
+     const requestData = {
       SenderFirstName: formData.senderName,
       SenderLastName: "", 
       SenderEmail: formData.email,
@@ -159,13 +164,18 @@ const RequestDelivery = () => {
       ],
     };
 
-    console.log(requestData);
+    //console.log(requestData);
     
-    // Send the GET request to the backend
-    const response = await axios.get('http://localhost:8080/logistics/requestQuotation', {
-      params: requestData,
+
+    const response = await axios.post('http://localhost:8080/logistics/requestQuotation', requestData, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
-   console.log('Backend response:', response.data);  */
+    setResponseData(response.data);
+    console.log("response")
+    console.log(responseData)
+    console.log('Backend response:', response.data);  
 }catch (error) {
     /* // Handle errors
     console.error('Error submitting form:', error);
@@ -347,7 +357,7 @@ const RequestDelivery = () => {
            style={{textAlign:"center", display: "inline-block"}}>
             Generate Quotation Now
           </button>
-          {showPopup && <PopupWindow onClose={handleClosePopup} />}
+          {showPopup && <PopupWindow onClose={handleClosePopup} requestData={responseData} />}
         </div>
     
       </form>

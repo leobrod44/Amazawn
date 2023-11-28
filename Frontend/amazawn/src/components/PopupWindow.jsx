@@ -1,9 +1,30 @@
 import React from 'react';
 import '../styling/Popup.css' 
+import axios from 'axios';
+import { useState } from 'react';
 
 
 
 const PopupWindow = ({ onClose }) => {
+  const [requestData, setRequestData] = useState(/* initial value */);
+  const handleButtonClick = async () => {
+    try {
+      // Send the POST request to the backend using Axios
+      console.log("data");
+      console.log(requestData);
+      const response = await axios.post('http://localhost:8080/logistics/startShipment', requestData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      // Handle the response if needed
+      console.log('Response:', response);
+    } catch (error) {
+      // Handle errors if the request fails
+      console.error('Error:', error);
+    }
+  };
   return (
     <div className="popup">
       <div className="popup-content">
@@ -43,6 +64,7 @@ const PopupWindow = ({ onClose }) => {
 
     onMouseOver={(e) => (e.currentTarget.style.boxShadow = '0px 16px 16px rgba(0, 0, 0, 0.5)')} // Box shadow on hover
     onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.1)')} // Reset box shadow when not hovering
+    onClick={handleButtonClick}
 >
     Checkout
        </button>

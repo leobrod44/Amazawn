@@ -6,6 +6,7 @@ import '../styling/RatingPage.css'
 import Footer from "../components/Footer";
 import ConfirmationPage from '../components/ConfirmationPage';
 import '../styling/CustomerSupport.css'
+import axios from 'axios';
 
 const RatingPage = () => {
   const [ratings, setRatings] = useState({
@@ -29,11 +30,36 @@ const RatingPage = () => {
     setComments(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     
     console.log('Selected Ratings:', ratings);
     console.log('Additional Comments:', comments);
     setSubmitted(true);
+    try {
+
+
+      const reviewData = {
+
+        //shipmentID: TODO get this from the url redirect ex: http://localhost:3000/review/3c9cb147-5c7d-44eb-8622-b7fa728f8b20
+        deliveryRating: ratings.delivery,
+        supportRating: ratings.supportTeam,
+        dropOffRating: ratings.packageDropOff,
+        trackingRating: ratings.trackingUpdates,
+        comment: comments,
+        
+
+      };
+      
+      const response = await axios.post('http://localhost:8080/support/addReview', reviewData, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      console.log(response.data);
+  } catch (error) {
+      console.error('Error:', error);
+      // Handle errors if the request fails
+  }
   };
 
   return (
