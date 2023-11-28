@@ -17,35 +17,52 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <button className="hamburger-menu" onClick={toggleSidebar}>
-      {isOpen ? (
-          <FontAwesomeIcon icon={faTimes} /> // Display the "x" icon when the sidebar is open
-        ) : (
-          <FontAwesomeIcon icon={faBars} /> // Display the hamburger menu icon when the sidebar is closed
-        )}
-    
+          <FontAwesomeIcon icon={faBars} /> 
       </button>
+
+      {isOpen && (
       <div className={`sidebar ${isOpen ? 'open' : ''}`} >
+         <button className="close-button"
+         style={{background:"transparent", color:"#016846"}}
+        
+         onClick={toggleSidebar}
+       >
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
         <nav>
           <ul>
+          <li className='firstli' style={{height:"10px"}}>
+          
+          </li>
             <li >
               <Link to="/requestdelivery" className='link' >
                 Shipping
               </Link>
             </li>
             <li >
-              <Link to="/" className='link'> 
+              <Link to="/tracking" className='link'> 
               Tracking
               </Link>
             </li>
-              
+
+      
+            <li>
+            <Link to="/review" className='link' >
+                Review
+              </Link>
+              </li>     
             <li className='lastli'>
-            <Link to="/" className='link'> 
+            <Link to="/customersupport" className='link'> 
+
               Support
             </Link>
             </li>
+            
           </ul>
         </nav>
+        
       </div>
+      )}
     </div>
   );
 };

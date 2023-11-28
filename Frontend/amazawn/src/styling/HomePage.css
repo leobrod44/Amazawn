@@ -36,7 +36,8 @@
   .pvalue{
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: larger;
-    margin-top:-20px;
+    margin-top:10px;
+    margin-bottom:10px;
   }
 
 
@@ -120,7 +121,7 @@
   .paragraphs p {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: larger;
-    padding: 10px;
+    padding: 20px;
   }
   .line-div {
     text-align: center;

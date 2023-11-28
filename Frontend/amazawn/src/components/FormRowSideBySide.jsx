@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormRowSideBySide = ({ type1, name1, value1, onChange1, labelText1, err1, type2, name2, value2, onChange2, labelText2, err2 }) => {
+const FormRowSideBySide = ({ type1, name1,  labelText1, err1, type2, name2, labelText2, err2 }) => {
     return (
       <div className="form-row-side-by-side">
         <div className="form-row">
