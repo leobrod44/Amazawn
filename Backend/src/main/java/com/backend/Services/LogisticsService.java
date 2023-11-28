@@ -62,12 +62,12 @@ public class LogisticsService
         return s.get(0).getId();
     }
 
-    public TrackerGiveBack startTracker (TrackingInfo t) {
+    public TrackingData getShipmentLocation(TrackingInfo t) {
         Shipment s = shipmentRepository.findById(t.shipmentID).orElse(null);
 
         Tracker tracker = new Tracker(s, t.currentDate, quotaRepository);
 
-        TrackerGiveBack ttt = new TrackerGiveBack(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
+        TrackingData ttt = new TrackingData(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
         // how long ago shipment arrived at milestone
         return ttt;
     }
