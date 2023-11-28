@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import ProgressBar from "../components/ProgressBar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styling/index.css";
 import "../styling/Tracking.css";
 
 const TrackingPage = () => {
@@ -28,11 +27,11 @@ const TrackingPage = () => {
                 <h3 style={{ marginBottom: "3rem"}}>Track your Package</h3>
 
                 <label style={{ marginBottom: "0.3rem",  marginTop: "2rem", color:"#024f35"}}>Enter your delivery ID: </label>
-                <input type="text" className="form-input"/>
+                <div><input type="text" className="id-input"/></div>
                 <div>
                     <button
                     type="button"
-                    className="btn"
+                    className="track-btn"
                     onClick={toggleButton}
                     style={{ marginTop: "1.5rem" }}
                     >
@@ -73,12 +72,12 @@ const TrackingPage = () => {
                     <div>
                     <button
                         type="button"
-                        className="btn"
+                        className="track-btn"
                         onClick={toggleButton}>
                             Track another package
                     </button>
                     </div>
-                    <div><Link to="/" className="btn" onClick={() => {window.scroll(0, 0);}}>Go Back To Home Page</Link></div>
+                    <div><Link to="/" className="track-btn" onClick={() => {window.scroll(0, 0);}}>Go Back To Home Page</Link></div>
                     </div>
                 </div>
             </div>
