@@ -1,9 +1,9 @@
 package com.backend.Entities.Structures;
 
 import java.util.Date;
-import java.util.UUID;
 
-public class TrackerGiveBack {
+public class TrackingData
+{
 
     public int progress;
 
@@ -11,9 +11,9 @@ public class TrackerGiveBack {
 
     public Date lastMilestoneDate;
 
-    public TrackerGiveBack() {}
+    public TrackingData() {}
 
-    public TrackerGiveBack(int progress, Date ETA, Date lastMilestoneDate) {
+    public TrackingData(int progress, Date ETA, Date lastMilestoneDate) {
         this.progress = progress;
         this.ETA = ETA;
         this.lastMilestoneDate = lastMilestoneDate;
