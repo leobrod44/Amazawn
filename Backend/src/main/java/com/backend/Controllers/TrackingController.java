@@ -17,7 +17,7 @@ public class TrackingController {
     @Autowired
     private LogisticsService logisticsService;
 
-    @GetMapping("/trackShipment")
+    @PostMapping("/trackShipment")
     public TrackingData trackShipment(@RequestBody TrackingInfo t) {return logisticsService.getShipmentLocation(t);}
 
     @GetMapping("/getShipment")

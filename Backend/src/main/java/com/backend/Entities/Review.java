@@ -13,6 +13,10 @@ public class Review
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @Column
+    private UUID shipmentID;
+
     @Column
     private StarRating deliveryRating;
 
@@ -28,8 +32,9 @@ public class Review
     @Column
     private String comment;
 
-    public Review(StarRating deliveryRating, StarRating dropOffRating, StarRating trackingRating, StarRating supportRating, String comment)
+    public Review(UUID shipmentID, StarRating deliveryRating, StarRating dropOffRating, StarRating trackingRating, StarRating supportRating, String comment)
     {
+        this.shipmentID = shipmentID;
         this.deliveryRating = deliveryRating;
         this.dropOffRating = dropOffRating;
         this.trackingRating = trackingRating;

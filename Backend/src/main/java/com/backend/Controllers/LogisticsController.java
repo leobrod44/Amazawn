@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RequestMapping("/logistics")
@@ -85,12 +87,12 @@ public class LogisticsController
                 logisticsService.createPackage(pkg,quota.getId(), shipment.getId());
             });
 
+            //save shipment
+            logisticsService.createShipment(shipment, qi.sender, qi.receiver);
+            System.out.println(logisticsService.shipmentRepository.findById(shipment.getId()).get().getId());
             //create users
             User sender = userService.addShipmentToUser(qi.sender, shipment.getId());
             User receiver = userService.addShipmentToUser(qi.receiver, shipment.getId());
-
-            //save shipment
-            logisticsService.createShipment(shipment, sender, receiver);
 
             // Send email notification
             emailService.sendShipmentStartedEmail(shipment.getReceiverMail(), shipment.getId());
@@ -98,5 +100,13 @@ public class LogisticsController
             return false;
         }
         return true;
+    }
+    @PostMapping("/arrived/{uuid}")
+    public void makeShipmentArrive(@PathVariable("uuid") UUID uuid) {
+        Shipment s = logisticsService.shipmentRepository.findById(uuid).get();
+        String sender = s.getSenderMail();
+        String receiver = s.getReceiverMail();
+        emailService.sendShipmentArrivedEmail(sender, uuid);
+        emailService.sendShipmentArrivedEmail(receiver, uuid);
     }
 }

@@ -21,14 +21,23 @@ public class UserService {
 
     public User addShipmentToUser(User user, UUID shipment)
     {
-        User u = userRepository.findByEmail(user.getEmail());
-        if(u== null){
-            u = new User(user.getFirst_name(), user.getLast_name(),user.getEmail(),shipment);
+        String  x = user.getEmail();
+        try{
+            User u = userRepository.findByEmail(user.getEmail()).orElse(null);
+            if(u== null){
+                u = new User(user.getFirst_name(), user.getLast_name(),user.getEmail(),shipment);
+                userRepository.save(u);
+            }
+            u.addShipment(shipment);
             userRepository.save(u);
+            return u;
         }
-        u.addShipment(shipment);
-        userRepository.save(u);
-        return u;
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+
+
     }
 
 
