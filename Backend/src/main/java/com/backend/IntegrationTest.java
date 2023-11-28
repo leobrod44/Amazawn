@@ -80,8 +80,8 @@ class IntegrationTest {
     }
     private void testAcceptQuotation(String r) {
         //delete test obj
-        User sender = userRepository.findByEmail(SENDER_EMAIL);
-        User receiver = userRepository.findByEmail(RECEIVER_EMAIL);
+        User sender = userRepository.findByEmail(SENDER_EMAIL).orElse(null);
+        User receiver = userRepository.findByEmail(RECEIVER_EMAIL).orElse(null);
         if (sender != null)
             userRepository.deleteById(sender.getId());
         if (receiver != null)

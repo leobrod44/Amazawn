@@ -22,12 +22,6 @@ public class User
     @Column
     private UUID shipment;
 
-    @Column
-    private boolean isSender;
-
-    @Column
-    private boolean isReceiver;
-
     public UUID getId()
     {
         return id;
