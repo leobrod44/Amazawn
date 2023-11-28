@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -61,12 +62,12 @@ public class LogisticsService
         return s.get(0).getId();
     }
 
-    public TrackingData getShipmentLocation(TrackingInfo t) {
+    public TrackerGiveBack startTracker (TrackingInfo t) {
         Shipment s = shipmentRepository.findById(t.shipmentID).orElse(null);
 
         Tracker tracker = new Tracker(s, t.currentDate, quotaRepository);
 
-        TrackingData ttt = new TrackingData(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
+        TrackerGiveBack ttt = new TrackerGiveBack(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
         // how long ago shipment arrived at milestone
         return ttt;
     }

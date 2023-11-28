@@ -1,0 +1,173 @@
+[
+    {
+        "city": "New York",
+        "longitude": -74.006,
+        "latitude": 40.7128
+    },
+    {
+        "city": "Los Angeles",
+        "longitude": -118.2437,
+        "latitude": 34.0522
+    },
+    {
+        "city": "Chicago",
+        "longitude": -87.6298,
+        "latitude": 41.8781
+    },
+    {
+        "city": "Houston",
+        "longitude": -95.3698,
+        "latitude": 29.7604
+    },
+    {
+        "city": "Phoenix",
+        "longitude": -112.0740,
+        "latitude": 33.4484
+    },
+    {
+        "city": "Philadelphia",
+        "longitude": -75.1652,
+        "latitude": 39.9526
+    },
+    {
+        "city": "San Antonio",
+        "longitude": -98.4936,
+        "latitude": 29.4241
+    },
+    {
+        "city": "San Diego",
+        "longitude": -117.1611,
+        "latitude": 32.7157
+    },
+    {
+        "city": "Dallas",
+        "longitude": -96.7967,
+        "latitude": 32.7767
+    },
+    {
+        "city": "San Jose",
+        "longitude": -121.8863,
+        "latitude": 37.3541
+    },
+    {
+        "city": "Austin",
+        "longitude": -97.7431,
+        "latitude": 30.2672
+    },
+    {
+        "city": "Jacksonville",
+        "longitude": -81.6557,
+        "latitude": 30.3322
+    },
+    {
+        "city": "Indianapolis",
+        "longitude": -86.1581,
+        "latitude": 39.7684
+    },
+    {
+        "city": "San Francisco",
+        "longitude": -123.0720,
+        "latitude": 37.7749
+    },
+    {
+        "city": "Columbus",
+        "longitude": -82.9988,
+        "latitude": 39.9612
+    },
+    {
+        "city": "Fort Worth",
+        "longitude": -97.3301,
+        "latitude": 32.7555
+    },
+    {
+        "city": "Charlotte",
+        "longitude": -80.8431,
+        "latitude": 35.2271
+    },
+    {
+        "city": "Seattle",
+        "longitude": -122.3321,
+        "latitude": 47.6062
+    },
+    {
+        "city": "Denver",
+        "longitude": -104.9903,
+        "latitude": 39.7392
+    },
+    {
+        "city": "Washington",
+        "longitude": -77.0369,
+        "latitude": 38.8951
+    },
+    {
+        "city": "Boston",
+        "longitude": -71.0589,
+        "latitude": 42.3601
+    },
+    {
+        "city": "Nashville",
+        "longitude": -86.7816,
+        "latitude": 36.1627
+    },
+    {
+        "city": "Baltimore",
+        "longitude": -76.6094,
+        "latitude": 39.2904
+    },
+    {
+        "city": "Oklahoma City",
+        "longitude": -97.5164,
+        "latitude": 35.4634
+    },
+    
+    {
+        "city": "Toronto",
+        "longitude": -79.3832,
+        "latitude": 43.651070
+    },
+    {
+        "city": "Vancouver",
+        "longitude": -123.1216,
+        "latitude": 49.2827
+    },
+    {
+        "city": "Montreal",
+        "longitude": -73.5673,
+        "latitude": 45.5089
+    },
+    {
+        "city": "Calgary",
+        "longitude": -114.0719,
+        "latitude": 51.0447
+    },
+    {
+        "city": "Ottawa",
+        "longitude": -75.6950,
+        "latitude": 45.4215
+    },
+    {
+        "city": "Edmonton",
+        "longitude": -113.4909,
+        "latitude": 53.5444
+    },
+    {
+        "city": "Winnipeg",
+        "longitude": -97.1470,
+        "latitude": 49.8951
+    },
+    {
+        "city": "Quebec City",
+        "longitude": -71.2092,
+        "latitude": 46.8139
+    },
+    {
+        "city": "Hamilton",
+        "longitude": -79.8496,
+        "latitude": 43.2557
+    },
+    {
+        "city": "Halifax",
+        "longitude": -63.5753,
+        "latitude": 44.6488
+    }
+]
