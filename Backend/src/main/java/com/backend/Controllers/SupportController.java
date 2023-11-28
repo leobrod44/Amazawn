@@ -1,6 +1,6 @@
 package com.backend.Controllers;
 
-import com.backend.Entities.Center;
+import com.backend.Entities.Ticket;
 import com.backend.Entities.Review;
 import com.backend.Services.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,19 @@ public class SupportController
         try
         {
             supportService.saveReview(review);
+        } catch (Exception e)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    @PostMapping("/customersupport")
+    public boolean customerSupport(@RequestBody Ticket ticket)
+    {
+        try
+        {
+            supportService.saveTicket(ticket);
         } catch (Exception e)
         {
             return false;
