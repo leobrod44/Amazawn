@@ -32,6 +32,9 @@ public class LogisticsService
     @Autowired
     public CenterRepository centerRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     public Package createPackage(PackageInfo packageInfo, UUID quotaId, UUID shipmentId)
     {
         Package pkg = new Package(packageInfo.Weight, packageInfo.Length,packageInfo.Width, packageInfo.Height, packageInfo.Description,quotaId,shipmentId);
@@ -59,7 +62,8 @@ public class LogisticsService
 
     public UUID getShipment() {
         List<Shipment> s = shipmentRepository.findAll();
-        return s.get(0).getId();
+        return s.get(10).getId();
+        //currently set on index 6, that was the latest created shipment (used for testing)
     }
 
     public TrackerGiveBack startTracker (TrackingInfo t) {
@@ -68,7 +72,10 @@ public class LogisticsService
         Tracker tracker = new Tracker(s, t.currentDate, quotaRepository);
 
         TrackerGiveBack ttt = new TrackerGiveBack(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
-        // how long ago shipment arrived at milestone
+
+        if (ttt.progress == 5) {
+            emailService.sendShipmentArrivedEmail(s.getReceiverMail(), s.getId());
+        }
         return ttt;
     }
 

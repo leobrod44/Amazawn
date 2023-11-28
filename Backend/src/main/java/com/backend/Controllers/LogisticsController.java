@@ -29,9 +29,11 @@ public class LogisticsController
     @Autowired
     private LogisticsService logisticsService;
 
-
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EmailService emailService;
 
 
     @PostMapping("/addCenter")
@@ -92,6 +94,9 @@ public class LogisticsController
 
             //save shipment
             logisticsService.createShipment(shipment, sender, receiver);
+
+            // Send email notification
+            emailService.sendShipmentStartedEmail(shipment.getReceiverMail(), shipment.getId());
         }catch (Exception e){
             return false;
         }
