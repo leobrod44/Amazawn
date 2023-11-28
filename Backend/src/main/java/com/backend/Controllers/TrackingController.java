@@ -1,10 +1,7 @@
 package com.backend.Controllers;
 
-import com.backend.Entities.Structures.QuotaInfo;
-import com.backend.Entities.Structures.ShipmentRequest;
-import com.backend.Entities.Structures.TrackerGiveBack;
+import com.backend.Entities.Structures.TrackingData;
 import com.backend.Entities.Structures.TrackingInfo;
-import com.backend.Processors.Tracker;
 import com.backend.Services.LogisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +18,7 @@ public class TrackingController {
     private LogisticsService logisticsService;
 
     @GetMapping("/trackShipment")
-    public TrackerGiveBack trackShipment(@RequestBody TrackingInfo t) {return logisticsService.startTracker(t);}
+    public TrackingData trackShipment(@RequestBody TrackingInfo t) {return logisticsService.getShipmentLocation(t);}
 
     @GetMapping("/getShipment")
     public UUID getAllShipmentIDs () {

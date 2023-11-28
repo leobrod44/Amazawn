@@ -24,9 +24,6 @@ public class LogisticsController
     private CenterService centerService;
 
     @Autowired
-    private CenterRepository centerRepository;
-
-    @Autowired
     private LogisticsService logisticsService;
 
     @Autowired
@@ -65,7 +62,7 @@ public class LogisticsController
         return centerService.getAllCenters();
     }
 
-    @GetMapping("/requestQuotation")
+    @PostMapping("/requestQuotation")
     public QuotaInfo requestQuotation(@RequestBody ShipmentRequest shipment){
 
         QuotaInfo qi = logisticsService.getQuota(shipment);
