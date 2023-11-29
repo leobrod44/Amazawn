@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';// Import the useHistory hook
 import '../styling/Popup.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const PopupWindow = ({ onClose, requestData, deliveryAddress, originAddress }) => {
-  const navigate = useNavigate(); // Initialize the useHistory hook
 
   console.log(deliveryAddress);
   console.log(originAddress);
@@ -23,8 +23,8 @@ const PopupWindow = ({ onClose, requestData, deliveryAddress, originAddress }) =
       // Handle the response if needed
       console.log('Response:', response);
 
-      // If the request is successful, redirect to the homepage
-      navigate.push('/');
+     
+     
     } catch (error) {
       // Handle errors if the request fails
       console.error('Error:', error);
@@ -64,24 +64,29 @@ const PopupWindow = ({ onClose, requestData, deliveryAddress, originAddress }) =
             <p><span className="form-label">Total Amount: </span>{`CAD ${requestData.total}`}</p>
           </>
             )}
-        <button
-          className="btn"
-          style={{
-            backgroundColor: '#016846',
-            color: 'white',
-            transition: 'box-shadow 0.3s ease',
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-          }}
-          onMouseOver={(e) => (e.currentTarget.style.boxShadow = '0px 16px 16px rgba(0, 0, 0, 0.5)')}
-          onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.1)')}
-          onClick={handleButtonClick}
-        >
 
-          
-          Checkout
-        </button>
+<Link to="/" className="link">
+  <button
+    className="btn"
+    style={{
+      backgroundColor: '#016846',
+      color: 'white',
+      transition: 'box-shadow 0.3s ease',
+      boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+    }}
+    onMouseOver={(e) => (e.currentTarget.style.boxShadow = '0px 16px 16px rgba(0, 0, 0, 0.5)')}
+    onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.1)')}
+    onClick={handleButtonClick}
+  >
+    Checkout
+  </button>
+</Link>
+
+    
+   
+  </div>
       </div>
-    </div>
+    
   );
 };
 
