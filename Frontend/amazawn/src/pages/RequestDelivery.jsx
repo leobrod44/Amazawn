@@ -146,7 +146,7 @@ const RequestDelivery = () => {
         ],
       };
 
-      console.log(requestData);
+      console.log('REQUEST DATA',requestData);
 
       const response = await axios.post(
         "http://localhost:8080/logistics/requestQuotation",
@@ -161,6 +161,7 @@ const RequestDelivery = () => {
       console.log("response");
       console.log(responseData);
       console.log("Backend response:", response.data);
+      setShowPopup(true);
     } catch (error) {
      // Handle errors
     console.error('Error submitting form:', error);

@@ -21,10 +21,10 @@ const PopupWindow = ({ onClose }) => {
       );
 
       // Handle the response if needed
-      console.log("Response:", response);
+      console.log("RESPONSE IN POPUPWINDOW:", response);
     } catch (error) {
       // Handle errors if the request fails
-      console.error("Error:", error);
+      console.error("Error IN POPUPWINDOW:", error);
     }
   };
   return (
@@ -93,7 +93,7 @@ const PopupWindow = ({ onClose }) => {
         </p>
 
         <button
-          classname="btn"
+          className="btn"
           style={{
             backgroundColor: "#016846",
             color: "white",
