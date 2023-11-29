@@ -1,5 +1,6 @@
 // src/pages/RatingPage.js
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
+import { useParams } from 'react-router-dom';
 import StarRating from "../components/StarRating";
 import Header from "../components/Header";
 import "../styling/RatingPage.css";
@@ -9,6 +10,7 @@ import "../styling/CustomerSupport.css";
 import axios from "axios";
 
 const RatingPage = () => {
+  const { shipmentId } = useParams();
   const [ratings, setRatings] = useState({
     delivery: null,
     supportTeam: null,
@@ -17,6 +19,11 @@ const RatingPage = () => {
   });
   const [comments, setComments] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+  
+    console.log('Shipment ID:', shipmentId);
+  }, [shipmentId]);
 
   const handleRatingChange = (category, rating) => {
     setRatings((prevRatings) => ({
@@ -35,7 +42,7 @@ const RatingPage = () => {
     setSubmitted(true);
     try {
       const reviewData = {
-        //shipmentID: TODO get this from the url redirect ex: http://localhost:3000/review/3c9cb147-5c7d-44eb-8622-b7fa728f8b20
+        shipmentID: shipmentId, 
         deliveryRating: ratings.delivery,
         supportRating: ratings.supportTeam,
         dropOffRating: ratings.packageDropOff,

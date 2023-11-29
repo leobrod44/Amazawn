@@ -21,7 +21,8 @@ function App() {
 
     <Route path="/" element={<HomePage />} />
     <Route path="/requestdelivery" element={<RequestDelivery />} />
-    <Route path="/review" element={<RatingPage/>}/>
+    
+    <Route path="/review/:shipmentId" component={RatingPage}/>
 
     <Route path="/customersupport" element={<CustomerSupport />} />
     <Route path="/tracking" element={<Tracking />} />
