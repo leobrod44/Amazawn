@@ -10,14 +10,16 @@ import "../styling/Tracking.css";
 import axios from "axios";
 
 const TrackingPage = () => {
-  const [showTracking, setShowTracking] = useState(true);
-  const [trackingData, setTrackingData] = useState({});
-  const [deliveryID, setDeliveryID] = useState("");
-
-  const toggleButton = async () => {
-    try {
-      const currentDate = new Date();
-      currentDate.setDate((currentDate.getDate() + 1).toISOString());
+    const [showTracking, setShowTracking] = useState(true);
+    const [trackingData, setTrackingData] = useState({});
+    const [deliveryID, setDeliveryID] = useState('');
+  
+    
+    const toggleButton = async () => {
+        try {
+            var currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 1);
+            currentDate=(currentDate).toISOString()
 
       const requestData = {
         shipmentID: deliveryID,
