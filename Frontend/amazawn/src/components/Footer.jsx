@@ -13,19 +13,24 @@ const Footer = () => {
     <div className="footerwrapper">
       <div className="main-footer">
         <div className="container">
-          
           <div>
             <div className="footer-cols">
               <ul className="footer-links">
                 <p className="titlefooter"> General</p>
                 <li>
-                  <Link to="/requestdelivery" className="link">Ship Now</Link>
+                  <Link to="/requestdelivery" className="link">
+                    Ship Now
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/tracking" className="link">Tracking</Link>
+                  <Link to="/tracking" className="link">
+                    Tracking
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/customersupport" className="link">Contact Us</Link>
+                  <Link to="/customersupport" className="link">
+                    Contact Us
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -39,9 +44,7 @@ const Footer = () => {
                 <li>
                   <Link className="link">FAQ</Link>
                 </li>
-                <li>
-                  <Link to="/review" className="link">Leave a Review</Link>
-                </li>
+                <li>Communication Preferences</li>
               </ul>
             </div>
 
@@ -61,10 +64,10 @@ const Footer = () => {
             </div>
           </div>
 
-          <div >
+          <div>
             <p className="intro-text2">
-              &copy;{new Date().getFullYear()} Amazawn Corporation | Terms
-              of Services | Privacy
+              &copy;{new Date().getFullYear()} Amazawn Corporation | Terms of
+              Services | Privacy
             </p>
           </div>
         </div>
