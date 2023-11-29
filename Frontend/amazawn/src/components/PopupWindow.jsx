@@ -3,19 +3,20 @@ import '../styling/Popup.css';
 import axios from 'axios';
 
   
-  const PopupWindow = ({ onClose }) => {
-    const [requestData, setRequestData] = useState(null);
+  const PopupWindow = ({ onClose, requestData, deliveryAddress, originAddress}) => {
+    console.log(deliveryAddress)
+    console.log(originAddress)
+    console.log("3 - PopupWindow created, responseData is: ", requestData);
     const handleButtonClick = async () => {
+      console.log("popup")
       try {
         // Send the POST request to the backend using Axios
-        console.log("data");
-        console.log(requestData);
+        
         const response = await axios.post('http://localhost:8080/logistics/startShipment', requestData, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
-  
         // Handle the response if needed
         console.log('Response:', response);
       } catch (error) {
@@ -42,16 +43,17 @@ import axios from 'axios';
         {requestData && (
         
           <>
-            <p><span className="form-label">Delivery Method: </span>{requestData.deliveryMethod}</p>
-            <p><span className="form-label">Delivery Address: </span>{requestData.deliveryAddress}</p>
-            <p><span className="form-label">Estimated Delivery Time: </span>{requestDataestimatedDeliveryTime}</p>
-            <p><span className="form-label">Estimated Pick Up Date: </span>{requestData.estimatedPickUpDate}</p>
-            <p><span className="form-label">Distance Pricing: </span>{`CAD ${requestData.distancePricing.toFixed(2)}`}</p>
-            <p><span className="form-label">Volume Pricing: </span>{`CAD ${requestData.volumePricing.toFixed(2)}`}</p>
-            <p><span className="form-label">Weight Pricing: </span>{`CAD ${requestData.weightPricing.toFixed(2)}`}</p>
-            <p><span className="form-label">Flat Rate: </span>{`CAD ${requestData.flatRate.toFixed(2)}`}</p>
-            <p><span className="form-label">Taxes: </span>{`CAD ${requestData.taxes.toFixed(2)}`}</p>
-            <p><span className="form-label">Total Amount: </span>{`CAD ${requestData.totalAmount.toFixed(2)}`}</p>
+            <p><span className="form-label">Delivery Method: </span>{requestData.shipmentMethod}</p>
+            <p><span className="form-label">Origin Address: </span>{originAddress}</p>
+            <p><span className="form-label">Delivery Address: </span>{deliveryAddress}</p>
+            <p><span className="form-label">Estimated Delivery Time: </span>{requestData.estimatedArrivalDate}</p>
+            <p><span className="form-label">Estimated Pick Up Date: </span>{requestData.departureDate}</p>
+            <p><span className="form-label">Distance Pricing: </span>{`CAD ${requestData.distancePricing}`}</p>
+            <p><span className="form-label">Volume Pricing: </span>{`CAD ${requestData.volumePricing}`}</p>
+            <p><span className="form-label">Weight Pricing: </span>{`CAD ${requestData.weightPricing}`}</p>
+            <p><span className="form-label">Flat Rate: </span>{`CAD ${requestData.flatRate}`}</p>
+            <p><span className="form-label">Taxes: </span>{`CAD ${requestData.taxes}`}</p>
+            <p><span className="form-label">Total Amount: </span>{`CAD ${requestData.total}`}</p>
           </>
             )}
         <button

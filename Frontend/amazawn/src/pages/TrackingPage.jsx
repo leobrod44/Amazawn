@@ -15,10 +15,12 @@ const TrackingPage = () => {
     const [trackingData, setTrackingData] = useState({});
     const [deliveryID, setDeliveryID] = useState('');
   
+    
     const toggleButton = async () => {
         try {
-            const currentDate = new Date();
-            currentDate.setDate((currentDate.getDate() + 1).toISOString());
+            var currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 1);
+            currentDate=(currentDate).toISOString()
 
             const requestData = {
                 shipmentID: deliveryID,
@@ -32,6 +34,8 @@ const TrackingPage = () => {
                     'Content-Type': 'application/json'
                 }
             });
+            //TODO change days skipped response.data last milestone
+            
             console.log(response.data);
             setTrackingData(response.data);
             setShowTracking(!showTracking);

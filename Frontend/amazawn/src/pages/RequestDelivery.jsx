@@ -17,36 +17,24 @@ const RequestDelivery = () => {
   const dropdownOptions = ["kg", "lb"]; 
 
   const [showPopup, setShowPopup] = useState(false);
-  const handleButtonClick = () => {
-    if (
-      !formData.senderName ||
-      !formData.email ||
-      !formData.pickupAddress ||
-      !formData.deliveryAddress ||
-      !formData.weight ||
-      !formData.weightUnit ||
-      !formData.height ||
-      !formData.length ||
-      !formData.width ||
-      !formData.Remail ||
-      !formData.receiverName
-  
-     ) {
-        console.log("Required fields are not filled");
-        toast.error("Cannot generate quotation");
-       }  else{
-            setShowPopup(true); }
-       };
- 
   
   const handleClosePopup = () => {
     setShowPopup(false);
   };
   
   const [responseData, setResponseData] = useState({});
-
+  const [addresses, setAddresses] = useState({});
+  
   useEffect(() => {
-    console.log('Response Data Updated:', responseData);
+    console.log('2 - Response Data Updated:', responseData);
+    const valuesArray = Object.values(responseData);
+    if (valuesArray.length > 0 && formData.pickupAddress && formData.deliveryAddress) {
+      console.log(responseData.value)
+      console.log(formData.pickupAddress)
+      console.log(formData.deliveryAddress)
+      setShowPopup(true);
+    }
+
   }, [responseData]); 
   
   const [formData, setFormData] = useState({
@@ -165,17 +153,15 @@ const RequestDelivery = () => {
     };
 
     //console.log(requestData);
-    
-
+  
     const response = await axios.post('http://localhost:8080/logistics/requestQuotation', requestData, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
+    console.log("1 - Ajax response received, setting response data")
     setResponseData(response.data);
-    console.log("response")
-    console.log(responseData)
-    console.log('Backend response:', response.data);  
+
 }catch (error) {
     /* // Handle errors
     console.error('Error submitting form:', error);
@@ -352,12 +338,11 @@ const RequestDelivery = () => {
         <div style={{display: "flex", justifyContent:"center"}}>
           <button 
            type="submit" 
-           onClick={handleButtonClick} 
            className="btn" 
            style={{textAlign:"center", display: "inline-block"}}>
             Generate Quotation Now
           </button>
-          {showPopup && <PopupWindow onClose={handleClosePopup} requestData={responseData} />}
+          {showPopup && <PopupWindow onClose={handleClosePopup} requestData={responseData} deliveryAddress={formData.deliveryAddress} originAddress={formData.pickupAddress} />}
         </div>
     
       </form>
