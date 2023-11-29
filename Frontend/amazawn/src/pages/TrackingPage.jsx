@@ -34,8 +34,6 @@ const TrackingPage = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            //TODO change days skipped response.data last milestone
-            
             console.log(response.data);
             setTrackingData(response.data);
             setShowTracking(!showTracking);
