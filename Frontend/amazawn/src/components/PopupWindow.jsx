@@ -1,29 +1,36 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';// Import the useHistory hook
 import '../styling/Popup.css';
 import axios from 'axios';
 
-  
-  const PopupWindow = ({ onClose, requestData, deliveryAddress, originAddress}) => {
-    console.log(deliveryAddress)
-    console.log(originAddress)
-    console.log("3 - PopupWindow created, responseData is: ", requestData);
-    const handleButtonClick = async () => {
-      console.log("popup")
-      try {
-        // Send the POST request to the backend using Axios
-        
-        const response = await axios.post('http://localhost:8080/logistics/startShipment', requestData, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        // Handle the response if needed
-        console.log('Response:', response);
-      } catch (error) {
-        // Handle errors if the request fails
-        console.error('Error:', error);
-      }
-    };
+const PopupWindow = ({ onClose, requestData, deliveryAddress, originAddress }) => {
+  const navigate = useNavigate(); // Initialize the useHistory hook
+
+  console.log(deliveryAddress);
+  console.log(originAddress);
+  console.log('3 - PopupWindow created, responseData is: ', requestData);
+
+  const handleButtonClick = async () => {
+    console.log('popup');
+    try {
+      // Send the POST request to the backend using Axios
+      const response = await axios.post('http://localhost:8080/logistics/startShipment', requestData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      // Handle the response if needed
+      console.log('Response:', response);
+
+      // If the request is successful, redirect to the homepage
+      navigate.push('/');
+    } catch (error) {
+      // Handle errors if the request fails
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="popup">
       <div className="popup-content">
@@ -36,6 +43,7 @@ import axios from 'axios';
         >
           x
         </button>
+        <br></br>
         <br></br>
         <br></br>
         <h3 style={{ textAlign: "center" }}>Quotation Details</h3>
@@ -68,6 +76,8 @@ import axios from 'axios';
           onMouseOut={(e) => (e.currentTarget.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.1)')}
           onClick={handleButtonClick}
         >
+
+          
           Checkout
         </button>
       </div>
