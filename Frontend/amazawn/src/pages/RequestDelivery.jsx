@@ -16,33 +16,15 @@ const RequestDelivery = () => {
   const dropdownOptions = ["kg", "lb"]; 
 
   const [showPopup, setShowPopup] = useState(false);
+
+
   const handleButtonClick = () => {
-    if (
-      !formData.senderName ||
-      !formData.email ||
-      !formData.pickupAddress ||
-      !formData.deliveryAddress ||
-      !formData.weight ||
-      !formData.weightUnit ||
-      !formData.height ||
-      !formData.length ||
-      !formData.width ||
-      !formData.Remail ||
-      !formData.receiverName
-  
-     ) {
-        console.log("Required fields are not filled");
-        toast.error("Cannot generate quotation");
-       }  else{
-            setShowPopup(true); }
-       };
- 
-  
+   setShowPopup(true); }
+
+
   const handleClosePopup = () => {
     setShowPopup(false);
   };
-  
-       
   
   const [formData, setFormData] = useState({
     senderName: "",
@@ -129,9 +111,7 @@ const RequestDelivery = () => {
         return;
       }
     }
-
-      //COMMENTING THIS OUT BECASUE ITS NOT NEEDED FOR SPRINT 3- SINCE SPRINT 3 IS FRONTEND ONLY
-    /*  const requestData = {
+      const requestData = {
       SenderFirstName: formData.senderName,
       SenderLastName: "", 
       SenderEmail: formData.email,
@@ -158,20 +138,19 @@ const RequestDelivery = () => {
         },
       ],
     };
-
-    console.log(requestData);
     
+    console.log('INFO FROM FORM \n',requestData);
+    setShowPopup(true);
     // Send the GET request to the backend
-    const response = await axios.get('http://localhost:8080/logistics/requestQuotation', {
+      const response = await axios.get('http://localhost:8080/logistics/requestQuotation', {
       params: requestData,
     });
-   console.log('Backend response:', response.data);  */
-}catch (error) {
-    /* // Handle errors
-    console.error('Error submitting form:', error);
 
-    // Optionally, you can show an error message to the user
-    toast.error('An error occurred while submitting the form. Please try again.'); */
+    
+    console.log('Backend response:', response.data);  
+}catch (error) {
+    console.error('Error submitting form:', error);
+    toast.error('An error occurred while submitting the form. Please try again.'); 
   } 
 };
 
@@ -194,7 +173,7 @@ const RequestDelivery = () => {
   return (
     <div>
       <Header/>
-      <form className="form"  method="POST"  onSubmit={handleFormSubmit}>
+      <form className="form"  method="GET"  onSubmit={handleFormSubmit}>
         <div style={{ textAlign: "center" }}>
           <Logo style={{ margin: "0 auto" }} />
         </div>
@@ -342,7 +321,6 @@ const RequestDelivery = () => {
         <div style={{display: "flex", justifyContent:"center"}}>
           <button 
            type="submit" 
-           onClick={handleButtonClick} 
            className="btn" 
            style={{textAlign:"center", display: "inline-block"}}>
             Generate Quotation Now
