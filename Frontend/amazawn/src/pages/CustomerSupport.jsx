@@ -14,9 +14,9 @@ const CustomerSupport = () => {
     message: "",
   });
   // State for the message text
-  const [messageText, setMessageText] = useState(""); 
+  const [messageText, setMessageText] = useState("");
   // State for the message text class
-  const [messageClass, setMessageClass] = useState(""); 
+  const [messageClass, setMessageClass] = useState("");
 
   const { name, email, message } = formData;
 
@@ -27,8 +27,6 @@ const CustomerSupport = () => {
       [name]: value,
     });
   };
-
-
 
   const isFieldEmpty = (field) => field.trim() === "";
 
@@ -41,7 +39,6 @@ const CustomerSupport = () => {
 
     if (!isFieldEmpty(name) && !isFieldEmpty(email) && !isFieldEmpty(message)) {
       if (isValidEmail(email)) {
-        // Show a success message
         setMessageText("Email successfully sent!");
         setMessageClass("green");
 
@@ -51,7 +48,6 @@ const CustomerSupport = () => {
           message: "",
         });
 
-        // Clear the success message after a few seconds
         setTimeout(() => {
           setMessageText("");
           setMessageClass("");
@@ -61,27 +57,24 @@ const CustomerSupport = () => {
             name: name,
             email: email,
             message: message,
-    
           };
-          const response = await axios.post('http://localhost:8080/support/customersupport', ticketData, {
+          const response = await axios.post(
+            "http://localhost:8080/support/customersupport",
+            ticketData,
+            {
               headers: {
-                  'Content-Type': 'application/json'
-              }
-          });
+                "Content-Type": "application/json",
+              },
+            }
+          );
           console.log(response.data);
-      } catch (error) {
-          console.error('Error:', error);
-          // Handle errors if the request fails
-      }
-          
-          
-
+        } catch (error) {
+          console.error("Error:", error); 
+        }
       } else {
-        // Show a warning message for invalid email format
         toast.error("Invalid email address format.");
       }
     } else {
-      // Show a warning message if any field is empty
       toast.error("Please fill in all the fields.");
     }
   };
@@ -96,27 +89,28 @@ const CustomerSupport = () => {
           <form className="form" method="POST">
             <div className="title">Contact Customer Support</div>
             <div>
-              <FormRow 
-               type="text"
-               name="name"
-               labelText={"Your Full Name or Company Name"}
-               className={`name-email ${isFieldEmpty(name) ? "red" : ""}`}
+              <FormRow
+                type="text"
+                name="name"
+                labelText={"Your Full Name or Company Name"}
+                className={`name-email ${isFieldEmpty(name) ? "red" : ""}`}
                 required
                 value={formData.name}
                 onChange={handleInputChange}
               />
               <FormRow
-              type="email"
-              placeholder="Email"
-              name="email"
-              labelText={"Email Address"}
-              className={`name-email ${
-                isFieldEmpty(email) || !isValidEmail(email) ? "red" : "" }`}
-              required
-              value={formData.email}
-              onChange={handleInputChange}
+                type="email"
+                placeholder="Email"
+                name="email"
+                labelText={"Email Address"}
+                className={`name-email ${
+                  isFieldEmpty(email) || !isValidEmail(email) ? "red" : ""
+                }`}
+                required
+                value={formData.email}
+                onChange={handleInputChange}
               />
-              
+
               <label className="form-label">Enter Your Message Here</label>
               <textarea
                 name="message"
@@ -126,10 +120,8 @@ const CustomerSupport = () => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className={`message ${messageClass}`}>
-              {messageText}
-            </div>
-            <div style={{display: "flex", justifyContent:"center"}}>
+            <div className={`message ${messageClass}`}>{messageText}</div>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <button className="btn" type="submit" onClick={handleSubmit}>
                 Send Email
               </button>
@@ -137,7 +129,7 @@ const CustomerSupport = () => {
           </form>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 };
