@@ -1,6 +1,8 @@
 package com.backend;
 import com.backend.Entities.Structures.QuotaInfo;
+import com.backend.Entities.Structures.TrackingData;
 import com.backend.Entities.User;
+import com.backend.Repositories.ShipmentRepository;
 import com.backend.Repositories.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -11,6 +13,9 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import com.backend.Entities.Shipment;
+
+import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IntegrationTest {
@@ -23,35 +28,44 @@ class IntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private String SENDER_EMAIL = "john.doe@gmail.com";
-    private String RECEIVER_EMAIL = "jane.doe@gmail.com";
+    @Autowired
+    private ShipmentRepository shipmentRepository;
 
-
+    private String SENDER_EMAIL = "leobrod12@example.com";
+    private String RECEIVER_EMAIL = "matthew.flaherty18@alumni.loyola.ca";
 
     @Test
     void testStartingNewShipment(){
-        String response = testRequestQuotation();
+        String response = testSystem();
         testAcceptQuotation(response);
     }
-    public String testRequestQuotation() {
+
+    @Test
+    void testTracker() {
+        String response = testSystem();
+        testAcceptQuotation(response);
+        testTrackShipment();
+    }
+
+    public String testSystem() {
         //test acceptQuotation
         String url = "http://localhost:" + port + "/logistics/requestQuotation";
         String body = "{\n" +
-                "  \"SenderFirstName\": \"test\",\n" +
-                "  \"SenderLastName\": \"tester\",\n" +
+                "  \"SenderFirstName\": \"Leo\",\n" +
+                "  \"SenderLastName\": \"Testeretta\",\n" +
                 "  \"SenderEmail\": \""+SENDER_EMAIL+"\",\n" +
-                "  \"ReceiverFirstName\": \"test\",\n" +
-                "  \"ReceiverLastName\": \"testReceiverette\",\n" +
+                "  \"ReceiverFirstName\": \"Matt\",\n" +
+                "  \"ReceiverLastName\": \"Testerino\",\n" +
                 "  \"ReceiverEmail\":\""+RECEIVER_EMAIL+"\",\n" +
                 "  \"SenderLocation\": {\n" +
                 "    \"name\": \"Sender Location\",\n" +
-                "    \"latitude\": 40.7128,\n" +
-                "    \"longitude\": -74.0060\n" +
+                "    \"latitude\": 43.642567,\n" +
+                "    \"longitude\": -79.387054\n" +
                 "  },\n" +
                 "  \"ReceiverLocation\": {\n" +
                 "    \"name\": \"Receiver Location\",\n" +
-                "    \"latitude\": 34.0522,\n" +
-                "    \"longitude\": -118.2437\n" +
+                "    \"latitude\": 45.508888,\n" +
+                "    \"longitude\": -73.561668\n" +
                 "  },\n" +
                 "  \"requestedPackages\": [\n" +
                 "    {\n" +
@@ -101,6 +115,38 @@ class IntegrationTest {
 
 
     }
+
+    private void testTrackShipment() {
+        List<Shipment> shipments = shipmentRepository.findAll();
+        Shipment s = null;
+        for (Shipment shipment : shipments) {
+            if (SENDER_EMAIL.equals(shipment.getSenderMail()) && RECEIVER_EMAIL.equals(shipment.getReceiverMail())) {
+                s = shipment;
+                break;
+            }
+        }
+        if (s == null) {
+            throw new RuntimeException("Error detected: Shipment is null");
+        }
+
+        String url = "http://localhost:" + port + "/tracking/trackShipment";
+        String body = "{\n" +
+                "  \"shipmentID\": \"" + s.getId() + "\",\n" +
+                "  \"currentDate\": \"2023-11-28T20:15:00.000Z\"\n" +
+                "}\n";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> request = new HttpEntity<>(body, headers);
+        String response  = this.restTemplate.postForObject(url, request, String.class, headers);
+        validateResponse(response, TrackingData.class);
+        if (response.equals("false")){
+            throw new RuntimeException("Error detected in response: " + response);
+        }
+
+        shipmentRepository.deleteById(s.getId());
+    }
+
     private static <T> void validateResponse(String response, Class<T> type) {
         // Test connection
         if (response != null && response.contains("error")) {

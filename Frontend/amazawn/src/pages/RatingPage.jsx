@@ -35,7 +35,7 @@ const RatingPage = () => {
     setSubmitted(true);
     try {
       const reviewData = {
-        //shipmentID: TODO get this from the url redirect ex: http://localhost:3000/review/3c9cb147-5c7d-44eb-8622-b7fa728f8b20
+        //shipmentID: TODO get this from the url redirect ex: http://localhost:3000/review/3c9cb147-5c7d-44eb-8622-b7fa728f8b20"
         deliveryRating: ratings.delivery,
         supportRating: ratings.supportTeam,
         dropOffRating: ratings.packageDropOff,

@@ -49,7 +49,8 @@ public class LogisticsService
     {
         shipment.setSenderMail(sender.getEmail());
         shipment.setReceiverMail(receiver.getEmail());
-        shipmentRepository.save(shipment);
+        var s = shipmentRepository.save(shipment);
+        System.out.println(s);
     }
 
     public QuotaInfo getQuota(ShipmentRequest shipmentRequest){
@@ -64,11 +65,9 @@ public class LogisticsService
 
     public TrackingData getShipmentLocation(TrackingInfo t) {
         Shipment s = shipmentRepository.findById(t.shipmentID).orElse(null);
-
         Tracker tracker = new Tracker(s, t.currentDate, quotaRepository);
-
         TrackingData ttt = new TrackingData(tracker.calculateProgressNumber(), tracker.getEstimatedArrivalDate(), tracker.lastMilestone());
-        // how long ago shipment arrived at milestone
+
         return ttt;
     }
 

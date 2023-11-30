@@ -27,8 +27,8 @@ public class SupportController
         return true;
     }
 
-    @PostMapping("/customersupport")
-    public boolean customerSupport(@RequestBody Ticket ticket)
+    @PostMapping("/addTicket")
+    public boolean addTicket(@RequestBody Ticket ticket)
     {
         try
         {

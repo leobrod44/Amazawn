@@ -27,3 +27,10 @@ Amazawn is a user-friendly platform that ...
 | Racha Kara | 40210865 | Front End Developer |
 | Imane Madda | 40208741 | Front End Developer |
 | Matthew Flaherty | 40228462 | Back End Developer |
+
+### Steps to Launch Website
+1. Clone repository locally
+2. Run `cd Frontend` and `cd amazawn`
+3. Run `npm install`
+4. Run `npm start` 
+
