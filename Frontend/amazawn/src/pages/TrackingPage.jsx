@@ -8,20 +8,38 @@ import { Link } from "react-router-dom";
 import "../styling/index.css";
 import "../styling/Tracking.css";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TrackingPage = () => {
-  const [showTracking, setShowTracking] = useState(true);
-  const [trackingData, setTrackingData] = useState({});
+  const [showTracking, setShowTracking] = useState(false);
   const [deliveryID, setDeliveryID] = useState("");
+  const [trackingData, setTrackingData] = useState({
+    progress: 0,
+    eta: null,
+    lastMilestone: null
+  });
+  
+  const handleInputChange = (event) => {
+    setDeliveryID(event.target.value);
+  };
 
-  const toggleButton = async () => {
+  const handleContentChange = async () => {
+    if (deliveryID == "") {
+      console.log("Required fields are not filled");
+      toast.error("Please enter a delivery ID.");
+      return;
+    }
+    setShowTracking(true);
     try {
+      //get the current date
       const currentDate = new Date();
-      currentDate.setDate((currentDate.getDate() + 1).toISOString());
+      currentDate.setDate(currentDate.getDate() + 1);
+      const formattedCurrentDate = currentDate.toISOString();
 
       const requestData = {
         shipmentID: deliveryID,
-        currentDate: currentDate,
+        currentDate: formattedCurrentDate,
       };
       console.log(deliveryID);
       console.log(requestData);
@@ -35,24 +53,26 @@ const TrackingPage = () => {
           },
         }
       );
+
       console.log(response.data);
-      setTrackingData(response.data);
-      setShowTracking(!showTracking);
+      setTrackingData({
+        progress: response.data.progress,
+        eta: new Date(response.data.eta),
+        lastMilestone: new Date(response.data.lastMilestone),
+      });
     } catch (error) {
       console.error("Error:", error);
       // Handle errors if the request fails
+      toast.error('Invalid delivery ID.'); 
     }
   };
-
-  const handleInputChange = (event) => {
-    setDeliveryID(event.target.value);
-  };
+  
   return (
     <div>
       <nav>
         <Header />
       </nav>
-      {showTracking && (
+      {!showTracking && (
         <div
           style={{ textAlign: "center", display: "block" }}
           className="trackdelivery"
@@ -81,7 +101,7 @@ const TrackingPage = () => {
             <button
               type="button"
               className="btn"
-              onClick={toggleButton}
+              onClick={handleContentChange}
               style={{ marginTop: "1.5rem" }}
             >
               Track Delivery
@@ -90,7 +110,7 @@ const TrackingPage = () => {
         </div>
       )}
 
-      {!showTracking && (
+      {showTracking && (
         <div
           style={{ textAlign: "center", display: "block" }}
           className="displaytrackinfo"
@@ -116,14 +136,14 @@ const TrackingPage = () => {
               className="form-label"
             >
               <p style={{ fontWeight: "bold" }}> Delivery ID :&nbsp;</p>
-              <p>12345{}</p>
+              <p>{deliveryID}</p>
             </div>
             <div
               style={{ display: "flex", marginBottom: "0rem" }}
               className="form-label"
             >
               <p style={{ fontWeight: "bold" }}> Status :&nbsp;</p>
-              <p>In Transit{}</p>
+              <p>{trackingData.progress} at {trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString()}</p>
             </div>
             <div
               style={{ display: "flex", marginBottom: "0rem" }}
@@ -132,7 +152,7 @@ const TrackingPage = () => {
               <p style={{ fontWeight: "bold" }}>
                 Estimated Delivery Date :&nbsp;
               </p>
-              <p>Monday, November 20th, 2023{}</p>
+              <p>{trackingData.eta && new Date(trackingData.eta).toLocaleString()}</p>
             </div>
             <div
               style={{ display: "flex", marginBottom: "0rem" }}
@@ -160,7 +180,7 @@ const TrackingPage = () => {
               }}
             >
               <div>
-                <button type="button" className="btn" onClick={toggleButton}>
+                <button type="button" className="btn" onClick={setShowTracking(false)}>
                   Track another package
                 </button>
               </div>
