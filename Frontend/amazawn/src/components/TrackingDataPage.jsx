@@ -1,16 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Logo from "./Logo";
 import Header from "./Header";
 import Footer from "./Footer";
 import ProgressBar from "../components/ProgressBar";
 
-const TrackingDataPage = ({
-    dID,
-    prog,
-    eta,
-    progStatus
-}) => (
+
+const TrackingDataPage = () => {
+    const { deliveryID, progress, ETA, progressStatus } = useParams();
+  
+    console.log(deliveryID);
+    console.log(progress);
+    console.log(ETA);
+    console.log(' PROGRESS STATUS IN TR5ACKING DATA PAGE' , progressStatus);
+
+return (
     <div>
       <nav>
         <Header />
@@ -40,14 +44,14 @@ const TrackingDataPage = ({
             className="form-label"
         >
             <p style={{ fontWeight: "bold" }}> Delivery ID :&nbsp;</p>
-            <p>{dID}</p>
+            <p>{deliveryID}</p>
         </div>
         <div
             style={{ display: "flex", marginBottom: "0rem" }}
             className="form-label"
         >
             <p style={{ fontWeight: "bold" }}> Status :&nbsp;</p>
-            <p>{progStatus}</p>
+            <p>{progressStatus}</p>
         </div>
         <div
             style={{ display: "flex", marginBottom: "0rem" }}
@@ -56,14 +60,7 @@ const TrackingDataPage = ({
             <p style={{ fontWeight: "bold" }}>
             Estimated Delivery Date :&nbsp;
             </p>
-            <p>{eta && new Date(eta).toLocaleString()}</p>
-        </div>
-        <div
-            style={{ display: "flex", marginBottom: "0rem" }}
-            className="form-label"
-        >
-            <p style={{ fontWeight: "bold" }}>Delivery Address :&nbsp;</p>
-            <p> 1455, Blvd. De Maisonneuve Ouest, Montreal, H3G 1M8{}</p>
+            <p>{ETA && new Date(ETA).toLocaleString()}</p>
         </div>
         <div
             style={{ display: "flex", marginBottom: "0rem" }}
@@ -72,10 +69,10 @@ const TrackingDataPage = ({
             <p style={{ fontWeight: "bold" }}>
             Customer support contact :&nbsp;
             </p>
-            <p>customersupport@amazawn.com</p>
+            <p>amazawnlogistics@gmail.com</p>
         </div>
 
-        <ProgressBar progression={prog / 5} />
+        <ProgressBar progression={progress / 5} />
         <div
             style={{
             display: "flex",
@@ -113,5 +110,5 @@ const TrackingDataPage = ({
       </nav>
     </div>
 )
-
+};
 export default TrackingDataPage;

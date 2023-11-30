@@ -28,7 +28,7 @@ function App() {
     <Route path="/customersupport" element={<CustomerSupport />} />
     <Route path="/tracking" element={<Tracking />} />
     <Route path="/trackingdata" element={<TrackingDataPage />} />
-
+    <Route path="/trackingdata/:deliveryID/:progress/:ETA/:progressStatus" element={<TrackingDataPage />} />
 
     </Routes>
     </BrowserRouter>
