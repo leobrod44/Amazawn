@@ -93,9 +93,9 @@ const TrackingPage = () => {
       //setShowTracking(true);
       //console.log("showTracking after:", showTracking);
      
-      //go to trackingdata page
+      //go to trackingdata pag
       //{showTracking && <TrackingDataPage onClick={handleCloseTracking} diD={deliveryID} prog={trackingData.progress}  eta={trackingData.eta} progStatus={progressStatus}/>}
-      navigate('/home?diD=${deliveryID}&prog=${trackingData.progress}&eta=${trackingData.eta}&progStatus=${progressStatus}');
+      navigate('/trackingdata?dID=${deliveryID}&prog=${trackingData.progress}&eta=${trackingData.eta}&progStatus=${progressStatus}');
 
     } catch (error) {
       console.log('ERROR INSIDE CATCH',error);
