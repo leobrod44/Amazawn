@@ -18,7 +18,7 @@ const CustomerSupport = () => {
   // State for the message text class
   const [messageClass, setMessageClass] = useState("");
 
-  const { name, email, message } = formData;
+  const { name, email, tracking_number, message } = formData;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,6 +57,7 @@ const CustomerSupport = () => {
           const ticketData = {
             name: name,
             email: email,
+            tracking_number: tracking_number,
             message: message,
           };
           const response = await axios.post(
@@ -117,6 +118,7 @@ const CustomerSupport = () => {
                 placeholder="Tracking-Number"
                 name="tracking_number"
                 labelText={"Tracking Number (Optional)"}
+                value={formData.tracking_number}
                 onChange={handleInputChange}
               />
 
