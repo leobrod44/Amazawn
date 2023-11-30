@@ -12,13 +12,14 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TrackingPage = () => {
-  const [showTracking, setShowTracking] = useState(false);
+  const [showTracking, setShowTracking] = useState(true);
   const [deliveryID, setDeliveryID] = useState("");
   const [trackingData, setTrackingData] = useState({
     progress: 0,
     eta: null,
     lastMilestone: null
   });
+  const [progressStatus, setProgressSatus] = useState("");
   
   const handleInputChange = (event) => {
     setDeliveryID(event.target.value);
@@ -30,7 +31,7 @@ const TrackingPage = () => {
       toast.error("Please enter a delivery ID.");
       return;
     }
-    setShowTracking(true);
+    setShowTracking(false);
     try {
       //get the current date
       const currentDate = new Date();
@@ -52,18 +53,28 @@ const TrackingPage = () => {
             "Content-Type": "application/json",
           },
         }
-      );
-
+      ).then((response) => setTrackingData(response.data));
       console.log(response.data);
-      setTrackingData({
-        progress: response.data.progress,
-        eta: new Date(response.data.eta),
-        lastMilestone: new Date(response.data.lastMilestone),
-      });
+
+      if (response.data.progress == 1) {
+        progressStatus = "order creater at " + trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString();
+      } else if (response.data.progress == 2) {
+        progressStatus = "package picked up " + trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString();
+      } else if (response.data.progress == 3) {
+        progressStatus = "package arrived at center 1 " + trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString();
+      } else if (response.data.progress == 4) {
+        progressStatus = "package arrived at center 2 " + trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString();
+      } else if (response.data.progress == 5) {
+        progressStatus = "arrived at destination " + trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString();
+      } else {
+        progressStatus = "No update yet";
+      }
+      
     } catch (error) {
-      console.error("Error:", error);
+      console.log(error);
       // Handle errors if the request fails
-      toast.error('Invalid delivery ID.'); 
+      toast.error('Invalid delivery ID.');
+      setShowTracking(false);
     }
   };
   
@@ -72,7 +83,7 @@ const TrackingPage = () => {
       <nav>
         <Header />
       </nav>
-      {!showTracking && (
+      {(showTracking==false) && (
         <div
           style={{ textAlign: "center", display: "block" }}
           className="trackdelivery"
@@ -110,7 +121,7 @@ const TrackingPage = () => {
         </div>
       )}
 
-      {showTracking && (
+      {(showTracking==true) && (
         <div
           style={{ textAlign: "center", display: "block" }}
           className="displaytrackinfo"
@@ -143,7 +154,7 @@ const TrackingPage = () => {
               className="form-label"
             >
               <p style={{ fontWeight: "bold" }}> Status :&nbsp;</p>
-              <p>{trackingData.progress} at {trackingData.lastMilestone && new Date(trackingData.lastMilestone).toLocaleString()}</p>
+              <p>{progressStatus}</p>
             </div>
             <div
               style={{ display: "flex", marginBottom: "0rem" }}
@@ -171,7 +182,7 @@ const TrackingPage = () => {
               <p>customersupport@amazawn.com</p>
             </div>
 
-            <ProgressBar progress={0.4} />
+            <ProgressBar progression={trackingData.progress / 5} />
             <div
               style={{
                 display: "flex",
