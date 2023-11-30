@@ -1,19 +1,19 @@
-import React from "react";
+import React,{ useState } from "react";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import TrackingDataPage from "../components/TrackingDataPage";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import "../styling/index.css";
 import "../styling/Tracking.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 
 const TrackingPage = () => {
-  const [showTracking, setShowTracking] = useState(false);
+  //const [showTracking, setShowTracking] = useState(false);
   const [deliveryID, setDeliveryID] = useState("");
+  const navigate = useNavigate();
   const [trackingData, setTrackingData] = useState({
     progress: 0,
     eta: null,
@@ -28,9 +28,9 @@ const TrackingPage = () => {
     setDeliveryID(event.target.value);
   };
 
-  const handleCloseTracking = () => {
-    setShowTracking(false);
-  };
+  //const handleCloseTracking = () => {
+  //  setShowTracking(false);
+  //};
 
   const handleContentChange = async () => {
     console.log("hi, entering this method");
@@ -89,10 +89,13 @@ const TrackingPage = () => {
       console.log(progressStatus);
       
       ///testing to see if setshowtracking works, it doesnt. it stayts false even after setting it  to true
-      console.log("showTracking before:", showTracking);
-      setShowTracking(true);
-      console.log("showTracking after:", showTracking);
+      //console.log("showTracking before:", showTracking);
+      //setShowTracking(true);
+      //console.log("showTracking after:", showTracking);
      
+      //go to trackingdata page
+      //{showTracking && <TrackingDataPage onClick={handleCloseTracking} diD={deliveryID} prog={trackingData.progress}  eta={trackingData.eta} progStatus={progressStatus}/>}
+      navigate('/home?diD=${deliveryID}&prog=${trackingData.progress}&eta=${trackingData.eta}&progStatus=${progressStatus}');
 
     } catch (error) {
       console.log('ERROR INSIDE CATCH',error);
@@ -138,7 +141,6 @@ const TrackingPage = () => {
             >
               Track Delivery
             </button>
-            {showTracking && <TrackingDataPage onClick={handleCloseTracking} dyD={deliveryID} prog={trackingData.progress}  eta={trackingData.eta} progStatus={progressStatus}/>}
           </div>
       </div>
     <nav>

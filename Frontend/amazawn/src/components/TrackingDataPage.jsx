@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import Header from "./Header";
+import Footer from "./Footer";
 import ProgressBar from "../components/ProgressBar";
 
 const TrackingDataPage = ({
@@ -9,6 +11,10 @@ const TrackingDataPage = ({
     eta,
     progStatus
 }) => (
+    <div>
+      <nav>
+        <Header />
+      </nav>
         <div
         style={{ textAlign: "center", display: "block" }}
         className="displaytrackinfo"
@@ -101,6 +107,10 @@ const TrackingDataPage = ({
             </div>
         </div>
         </div>
+        </div>
+        <nav>
+        <Footer />
+      </nav>
     </div>
 )
 
