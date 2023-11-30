@@ -1,5 +1,5 @@
 // src/pages/RatingPage.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import StarRating from "../components/StarRating";
 import Header from "../components/Header";
 import "../styling/RatingPage.css";
