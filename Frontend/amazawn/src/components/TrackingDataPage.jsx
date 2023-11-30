@@ -5,6 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ProgressBar from "../components/ProgressBar";
 import "../styling/Tracking.css";
+import ProgressionBar from "./ProgressionBar";
 
 
 const TrackingDataPage = () => {
@@ -72,7 +73,9 @@ return (
             </p>
             <p>amazawnlogistics@gmail.com</p>
         </div>
-            <ProgressBar progression={progress / 5} />
+        <div style={{ marginTop: "2.5rem", justifyContent: "left" }}>
+            <ProgressionBar currentStage={progress} />
+        </div>
         <div
             style={{
             display: "flex",
