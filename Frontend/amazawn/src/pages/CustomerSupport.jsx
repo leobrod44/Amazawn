@@ -45,6 +45,7 @@ const CustomerSupport = () => {
         setFormData({
           name: "",
           email: "",
+          tracking_number: "",
           message: "",
         });
 
@@ -108,6 +109,14 @@ const CustomerSupport = () => {
                 }`}
                 required
                 value={formData.email}
+                onChange={handleInputChange}
+              />
+              
+              <FormRow
+                type="tracking_number"
+                placeholder="Tracking-Number"
+                name="tracking_number"
+                labelText={"Tracking Number (Optional)"}
                 onChange={handleInputChange}
               />
 
