@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import TrackingDataPage from "../components/TrackingDataPage";
-import "../styling/index.css";
 import "../styling/Tracking.css";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -11,7 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const TrackingPage = () => {
-  //const [showTracking, setShowTracking] = useState(false);
   const [deliveryID, setDeliveryID] = useState("");
   const navigate = useNavigate();
   const [trackingData, setTrackingData] = useState({
@@ -82,16 +79,12 @@ const TrackingPage = () => {
       console.log("MADE IT PASSED THE TRY");
       console.log("PROGRESS STATUS IN TRACKING PAGE", progressStatus);
 
-      //go to trackingdata pag
-      //{showTracking && <TrackingDataPage onClick={handleCloseTracking} diD={deliveryID} prog={trackingData.progress}  eta={trackingData.eta} progStatus={progressStatus}/>}
-      // navigate(`/trackingdata?dID=${deliveryID}&prog=${response.data.progress}&eta=${response.data.ETA}&progStatus=${progressStatus}`);
-
       navigate(
         `/trackingdata/${deliveryID}/${response.data.progress}/${response.data.ETA}/${progressStatus}`
       );
     } catch (error) {
       console.log("ERROR INSIDE CATCH", error);
-      toast.error("Invalid delivery ID."); //does not mean that ID is invalid for now, just shows that backend isnt reached
+      toast.error("Invalid delivery ID.");
     }
   };
 
@@ -118,16 +111,18 @@ const TrackingPage = () => {
         >
           Enter your delivery ID:{" "}
         </label>
-        <input
-          type="text"
-          className="form-input"
-          value={deliveryID}
-          onChange={handleInputChange}
-        />
+        <div>
+          <input
+            type="text"
+            className="id-input"
+            value={deliveryID}
+            onChange={handleInputChange}
+          />
+        </div>
         <div>
           <button
             type="button"
-            className="btn"
+            className="track-btn"
             style={{ marginTop: "1.5rem" }}
             onClick={handleContentChange}
           >

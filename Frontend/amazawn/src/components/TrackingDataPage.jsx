@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import Header from "./Header";
 import Footer from "./Footer";
 import ProgressBar from "../components/ProgressBar";
+import "../styling/Tracking.css";
 
 
 const TrackingDataPage = () => {
@@ -71,8 +72,7 @@ return (
             </p>
             <p>amazawnlogistics@gmail.com</p>
         </div>
-
-        <ProgressBar progression={progress / 5} />
+            <ProgressBar progression={progress / 5} />
         <div
             style={{
             display: "flex",
@@ -83,7 +83,7 @@ return (
             <div>
             <Link
                 to="/tracking"
-                className="btn"
+                className="track-btn"
                 onClick={() => {
                 window.scroll(0, 0);
                 }}
@@ -94,7 +94,7 @@ return (
             <div>
             <Link
                 to="/"
-                className="btn"
+                className="track-btn"
                 onClick={() => {
                 window.scroll(0, 0);
                 }}
