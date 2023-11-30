@@ -1,5 +1,5 @@
 // src/pages/RatingPage.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import StarRating from "../components/StarRating";
 import Header from "../components/Header";
 import "../styling/RatingPage.css";
@@ -7,8 +7,15 @@ import Footer from "../components/Footer";
 import ConfirmationPage from "../components/ConfirmationPage";
 import "../styling/CustomerSupport.css";
 import axios from "axios";
+import { useParams } from 'react-router-dom';
 
 const RatingPage = () => {
+  const { shipmentId } = useParams();
+  useEffect(() => {
+    // fetch data based on this ID
+    console.log('Shipment ID:', shipmentId);
+  }, [shipmentId]);
+  
   const [ratings, setRatings] = useState({
     delivery: null,
     supportTeam: null,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
+
 const StarRating = ({ title }) => {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
