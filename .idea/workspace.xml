@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b76971aa-1e44-4e38-bbfa-77e28e7ebaed" name="Changes" comment="Added triggering package arrivals">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Amazawn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Amazawn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Entities/Center.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Entities/Package.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Entities/Shipment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Entities/Transport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Processors/Biller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Processors/FeeCalculator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Amazawn/src/Processors/Orchestrator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/TrackingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/TrackingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Entities/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Entities/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/LogisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/LogisticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/SupportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/SupportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/IntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/IntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Services/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Services/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Services/LogisticsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/backend/Services/LogisticsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Package_Arrival_Chcker" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +37,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2XBACv1ZjoLpQAP5V70WCP5WfoN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,10 +55,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "tracker-and-email-tests",
     "last_opened_file_path": "D:/school/SOEN 343/Amazawn/Amazawn_Backend/src",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -72,7 +69,23 @@
       <recent name="D:\school\SOEN 343\Amazawn\Amazawn_Backend\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.IntegrationTest.testTracker">
+    <configuration name="IntegrationTest.testTracker" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.backend" />
+      <option name="MAIN_CLASS_NAME" value="com.backend.IntegrationTest" />
+      <option name="METHOD_NAME" value="testTracker" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.backend.BackendApplication" />
@@ -80,17 +93,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.IntegrationTest.testTracker" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7a270fc4-c652-4e14-a6da-7699919e6dcb" name="Changes" comment="" />
+      <changelist id="b76971aa-1e44-4e38-bbfa-77e28e7ebaed" name="Changes" comment="Added triggering package arrivals" />
       <created>1698091974224</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698091974224</updated>
       <workItem from="1698091975435" duration="12000" />
       <workItem from="1698091999612" duration="1454000" />
+      <workItem from="1701272001352" duration="21639000" />
     </task>
     <task id="LOCAL-00001" summary="merge conflicts">
       <created>1701145585097</created>
@@ -131,26 +150,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge conflicts" />
     <option name="LAST_COMMIT_MESSAGE" value="merge conflicts" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/LogisticsController.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/com/backend/Services/LogisticsService.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Backend/src/main/java/com/backend/Controllers/SupportController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

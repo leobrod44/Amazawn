@@ -96,6 +96,7 @@ public class LogisticsController
 
             // Send email notification
             emailService.sendShipmentStartedEmail(shipment.getReceiverMail(), shipment.getId());
+            emailService.sendShipmentStartedEmail(shipment.getSenderMail(), shipment.getId());
         }catch (Exception e){
             return false;
         }
