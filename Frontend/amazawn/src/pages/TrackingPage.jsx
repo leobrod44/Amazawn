@@ -17,14 +17,12 @@ const TrackingPage = () => {
     lastMilestone: null,
   });
 
-  let progressStatus = "";
 
   const handleInputChange = (event) => {
     setDeliveryID(event.target.value);
   };
 
   const handleContentChange = async () => {
-    console.log("hi, entering this method");
     if (deliveryID == "") {
       console.log("Required fields are not filled");
       toast.error("Please enter a delivery ID.");
@@ -40,8 +38,6 @@ const TrackingPage = () => {
         shipmentID: deliveryID,
         currentDate: formattedCurrentDate,
       };
-      console.log("DELIVERY ID INSIDE THE TRY", deliveryID);
-      console.log("REQUEST DATA INSIDE THE TRY", requestData);
 
       const response = await axios.post(
         "http://localhost:8080/tracking/trackShipment",
@@ -52,35 +48,9 @@ const TrackingPage = () => {
           },
         }
       );
-      console.log("THIS IS THE BACKEND RESPONSE DATA", response.data);
-
-      console.log("PROGESS", response.data.progress);
-      console.log("TRACKING DATA", trackingData);
-
-      if (response.data.progress == 1) {
-        progressStatus = "Out for pickup at " + response.data.lastMilestoneDate;
-      } else if (response.data.progress == 2) {
-        progressStatus =
-          "Package on it's way to origin delivery center at " +
-          response.data.lastMilestoneDate;
-      } else if (response.data.progress == 3) {
-        progressStatus =
-          "Package on it's way to destination delivery center at " +
-          response.data.lastMilestoneDate;
-      } else if (response.data.progress == 4) {
-        progressStatus =
-          "Out for delivery at " + response.data.lastMilestoneDate;
-      } else if (response.data.progress == 5) {
-        progressStatus = "Delivered at " + response.data.lastMilestoneDate;
-      } else {
-        progressStatus = "No update yet";
-      }
-
-      console.log("MADE IT PASSED THE TRY");
-      console.log("PROGRESS STATUS IN TRACKING PAGE", progressStatus);
-
+      
       navigate(
-        `/trackingdata/${deliveryID}/${response.data.progress}/${response.data.ETA}/${progressStatus}`
+        `/trackingdata/${deliveryID}/${response.data.progress}/${response.data.ETA}/${response.data.lastMilestoneDate}`
       );
     } catch (error) {
       console.log("ERROR INSIDE CATCH", error);

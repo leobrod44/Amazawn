@@ -15,19 +15,20 @@ const TrackingDataPage = () => {
     console.log(deliveryID);
     console.log(progress);
     console.log(ETA);
+    console.log(lastMilestoneDate);
 
     let progressStatus = "";
     if (progress == 1) {
         progressStatus = "Out for pickup at ";
       } else if (progress == 2) {
         progressStatus =
-          "Package on it's way to origin delivery center at ";
+          "Package picked up at ";
       } else if (progress == 3) {
         progressStatus =
-          "Package on it's way to destination delivery center at ";
+          "Package in transit at  ";
       } else if (progress == 4) {
         progressStatus =
-          "Out for delivery at ";
+          "Package out for delivery at ";
       } else if (progress == 5) {
         progressStatus = "Delivered at ";
       } else {
@@ -71,7 +72,8 @@ return (
             className="form-label"
         >
             <p style={{ fontWeight: "bold" }}> Status :&nbsp;</p>
-            <p>{progressStatus} + {lastMilestoneDate && new Date(lastMilestoneDate).toLocaleString()}</p>
+            <p>{progressStatus} {lastMilestoneDate && new Date(lastMilestoneDate).toLocaleString()} </p>
+           
         </div>
         <div
             style={{ display: "flex", marginBottom: "0rem" }}
