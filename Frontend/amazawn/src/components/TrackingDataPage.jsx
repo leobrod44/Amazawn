@@ -9,12 +9,30 @@ import ProgressionBar from "./ProgressionBar";
 
 
 const TrackingDataPage = () => {
-    const { deliveryID, progress, ETA, progressStatus } = useParams();
+    const { deliveryID, progress, ETA, lastMilestoneDate } = useParams();
+
   
     console.log(deliveryID);
     console.log(progress);
     console.log(ETA);
-    console.log(' PROGRESS STATUS IN TR5ACKING DATA PAGE' , progressStatus);
+
+    let progressStatus = "";
+    if (progress == 1) {
+        progressStatus = "Out for pickup at ";
+      } else if (progress == 2) {
+        progressStatus =
+          "Package on it's way to origin delivery center at ";
+      } else if (progress == 3) {
+        progressStatus =
+          "Package on it's way to destination delivery center at ";
+      } else if (progress == 4) {
+        progressStatus =
+          "Out for delivery at ";
+      } else if (progress == 5) {
+        progressStatus = "Delivered at ";
+      } else {
+        progressStatus = "No update yet";
+      }
 
 return (
     <div>
@@ -53,7 +71,7 @@ return (
             className="form-label"
         >
             <p style={{ fontWeight: "bold" }}> Status :&nbsp;</p>
-            <p>{progressStatus}</p>
+            <p>{progressStatus} + {lastMilestoneDate && new Date(lastMilestoneDate).toLocaleString()}</p>
         </div>
         <div
             style={{ display: "flex", marginBottom: "0rem" }}
