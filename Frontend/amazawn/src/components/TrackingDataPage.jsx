@@ -94,7 +94,7 @@ return (
             <p>amazawnlogistics@gmail.com</p>
         </div>
         <div style={{ marginTop: "2.5rem", justifyContent: "left" }}>
-            <ProgressionBar currentStage={progress+1} />
+            <ProgressionBar currentStage={progress} />
         </div>
         <div
             style={{

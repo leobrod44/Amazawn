@@ -51,7 +51,7 @@
   margin-bottom: 6px;
 }
 
-.stepper-item.active {
+.stepper-item.active  {
   font-weight: bold;
 }
 
@@ -59,7 +59,7 @@
   background-color: #4bb543;
 }
 
-.stepper-item.completed .step-counter {
+.stepper-item.completed .step-counter  {
   background-color: #4bb543;
 }
 
@@ -71,6 +71,7 @@
   top: 13px;
   left: 50%;
   z-index: 3;
+
 }
 
 .stepper-item:first-child::before {
