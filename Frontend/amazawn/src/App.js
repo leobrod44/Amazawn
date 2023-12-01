@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomerSupport from './pages/CustomerSupport';
 import Tracking from './pages/TrackingPage';
+import TrackingDataPage from './components/TrackingDataPage';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
 
     <Route path="/customersupport" element={<CustomerSupport />} />
     <Route path="/tracking" element={<Tracking />} />
+    <Route path="/trackingdata" element={<TrackingDataPage />} />
+    <Route path="/trackingdata/:deliveryID/:progress/:ETA/:lastMilestoneDate" element={<TrackingDataPage />} />
 
     </Routes>
     </BrowserRouter>
